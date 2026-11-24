@@ -1,165 +1,2659 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KePu 医疗科普智能体产品调研与设计报告：从医生内容生产、患者互动到直播闭环。">
-  <title>KePu · 医疗科普智能体产品调研</title>
-  <style>
-    :root{
-      --ink:#142530;--ink-2:#27414a;--muted:#6d7e80;--line:#d9e2dd;--paper:#f5f7f1;
-      --cream:#fffdf8;--mint:#d9f0e6;--green:#156b58;--green-2:#0d4d42;--lime:#b8e86e;
-      --orange:#ef8d58;--yellow:#ffd773;--blue:#97c7e8;--rose:#efc3bd;--shadow:0 18px 55px rgba(20,37,48,.1)
-    }
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font-family:"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.55}
-    a{color:inherit}button{font:inherit} .wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}
-    .topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(217,226,221,.82);background:rgba(245,247,241,.88);backdrop-filter:blur(16px)}
-    .topbar-inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:-.02em}.brand-mark{width:34px;height:34px;border-radius:11px;background:var(--green);color:var(--lime);display:grid;place-items:center;font-size:17px;font-weight:900;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:700}.nav{display:flex;gap:18px;color:var(--muted);font-size:13px}.nav a{text-decoration:none}.nav a:hover{color:var(--green)}
-    .hero{padding:76px 0 70px;background:radial-gradient(circle at 77% 28%,rgba(184,232,110,.44),transparent 20%),radial-gradient(circle at 10% 0,rgba(151,199,232,.28),transparent 28%),var(--cream);border-bottom:1px solid var(--line)}
-    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center}.eyebrow{color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:.17em;font-weight:900}.hero h1{max-width:720px;margin:17px 0 18px;font-size:clamp(42px,6.7vw,78px);line-height:.98;letter-spacing:-.07em}.hero h1 em{color:var(--green);font-style:normal}.hero-lede{max-width:650px;color:var(--ink-2);font-size:19px;line-height:1.75;margin:0}.hero-note{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.78);color:var(--muted);font-size:12px}.chip strong{color:var(--ink)}
-    .hero-board{position:relative;min-height:376px;border:1px solid rgba(20,37,48,.15);border-radius:28px;background:var(--green-2);color:#f4f9e9;overflow:hidden;box-shadow:var(--shadow)}.hero-board:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-70px;top:-100px;background:rgba(184,232,110,.17)}.hero-board:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;left:-90px;bottom:-105px;background:rgba(151,199,232,.14)}.board-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.14);font-size:12px}.live-dot{width:8px;height:8px;display:inline-block;background:var(--lime);border-radius:50%;box-shadow:0 0 0 5px rgba(184,232,110,.13);margin-right:8px}.board-body{position:relative;z-index:1;padding:26px 24px}.board-body h2{font-size:27px;letter-spacing:-.04em;margin:0 0 10px}.board-body p{color:#c2d5c9;font-size:13px;max-width:320px;margin:0}.orbit{position:absolute;right:28px;top:105px;width:172px;height:172px;border:1px dashed rgba(184,232,110,.5);border-radius:50%}.orbit:before,.orbit:after{content:"";position:absolute;border-radius:50%;background:var(--lime);box-shadow:0 0 0 8px rgba(184,232,110,.1)}.orbit:before{width:13px;height:13px;top:21px;left:19px}.orbit:after{width:9px;height:9px;right:18px;bottom:25px;background:var(--blue);box-shadow:0 0 0 8px rgba(151,199,232,.1)}.orbit-core{position:absolute;inset:54px;border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--green-2);font-size:12px;font-weight:900;background:var(--lime);line-height:1.15}.board-flow{position:absolute;left:24px;right:24px;bottom:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.board-flow span{min-height:62px;padding:9px;border-radius:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:11px;color:#d7e8db}.board-flow b{display:block;color:var(--lime);font-size:13px;margin-bottom:3px}
-    section{padding:88px 0}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:30px}.section-kicker{color:var(--green);font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.section-head h2{font-size:clamp(30px,4vw,49px);line-height:1.05;letter-spacing:-.06em;margin:10px 0 0;max-width:700px}.section-head p{max-width:380px;margin:0;color:var(--muted);font-size:14px}.rule{height:1px;background:var(--line);margin:26px 0}
-    .thesis{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}.thesis-card{padding:30px;border-radius:22px;border:1px solid var(--line);background:var(--cream)}.thesis-card.dark{background:var(--green-2);color:#f6faef;border-color:var(--green-2)}.thesis-card h3{font-size:25px;line-height:1.2;letter-spacing:-.035em;margin:0 0 14px}.thesis-card p{margin:0;color:var(--muted);font-size:14px}.thesis-card.dark p{color:#c4d8ca}.big-claim{font-size:28px!important;color:var(--ink)!important;line-height:1.3;font-weight:800;letter-spacing:-.04em}.dark .big-claim{color:var(--lime)!important}.claim-underline{display:inline;background:linear-gradient(transparent 65%,var(--yellow) 65%)}.mini-list{display:grid;gap:12px;margin-top:22px}.mini-list div{display:flex;gap:11px;align-items:flex-start;font-size:13px}.mini-list i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--green);font-style:normal;font-size:11px;font-weight:900;flex:0 0 auto}.dark .mini-list i{background:rgba(184,232,110,.18);color:var(--lime)}
-    .role-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.role-tab,.phase-tab{border:1px solid var(--line);background:var(--cream);border-radius:999px;padding:8px 14px;color:var(--muted);font-size:12px;cursor:pointer}.role-tab[aria-selected="true"],.phase-tab[aria-selected="true"]{color:var(--green-2);background:var(--lime);border-color:var(--lime);font-weight:800}.role-panel{display:none}.role-panel.active{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}.role-main{border-radius:23px;background:var(--cream);border:1px solid var(--line);padding:27px}.role-main h3{font-size:26px;letter-spacing:-.04em;margin:0 0 10px}.role-main>p{color:var(--muted);font-size:14px;margin:0 0 23px}.step-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.step{padding:15px;border:1px solid var(--line);border-radius:15px;background:#fff}.step-no{color:var(--green);font-size:11px;font-weight:900}.step strong{display:block;margin:7px 0 4px;font-size:14px}.step span{display:block;color:var(--muted);font-size:12px;line-height:1.5}.role-side{border-radius:23px;padding:27px;background:#e7f1eb;border:1px solid #cbded1}.role-side h4{margin:0 0 16px;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--green)}.metric-row{padding:13px 0;border-top:1px solid rgba(21,107,88,.16);display:flex;justify-content:space-between;gap:15px;font-size:13px}.metric-row strong{color:var(--green-2)}.role-side .risk{margin-top:18px;padding:13px;border-radius:13px;background:#fff9e8;color:#765519;font-size:12px}
-    .loop{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}.loop:before{content:"";position:absolute;left:10%;right:10%;top:52px;border-top:1px dashed #a9beb3;z-index:0}.loop-node{position:relative;z-index:1;text-align:center}.loop-icon{width:104px;height:104px;margin:0 auto 15px;border-radius:50%;display:grid;place-items:center;border:10px solid var(--paper);outline:1px solid var(--line);background:var(--cream);font-size:25px}.loop-node:nth-child(1) .loop-icon{background:var(--blue)}.loop-node:nth-child(2) .loop-icon{background:var(--yellow)}.loop-node:nth-child(3) .loop-icon{background:var(--lime)}.loop-node:nth-child(4) .loop-icon{background:var(--rose)}.loop-node:nth-child(5) .loop-icon{background:var(--mint)}.loop-node strong{display:block;font-size:14px}.loop-node span{display:block;max-width:150px;margin:5px auto 0;color:var(--muted);font-size:12px}
-    .agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.agent-card{min-height:360px;padding:24px;border-radius:21px;background:var(--cream);border:1px solid var(--line);display:flex;flex-direction:column}.agent-card:nth-child(1){border-top:5px solid var(--orange)}.agent-card:nth-child(2){border-top:5px solid var(--blue)}.agent-card:nth-child(3){border-top:5px solid var(--lime)}.agent-code{font-size:11px;color:var(--muted);font-weight:900;letter-spacing:.12em}.agent-card h3{font-size:24px;letter-spacing:-.04em;margin:9px 0}.agent-card p{font-size:13px;color:var(--muted);margin:0}.agent-card ul{padding-left:18px;margin:20px 0;color:var(--ink-2);font-size:13px;line-height:1.8}.agent-card .tagline{margin-top:auto;padding:12px;border-radius:13px;background:#f0f4ec;color:var(--green-2);font-size:12px;font-weight:700}.agent-card a{display:inline-block;margin-top:15px;color:var(--green);font-size:12px;font-weight:800;text-decoration:none}
-    .specialty-spotlight{margin-top:30px;padding:25px;border-radius:23px;background:var(--green-2);color:#f6faef;box-shadow:0 15px 35px rgba(20,37,48,.09)}.spotlight-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:20px}.spotlight-head h3{margin:7px 0 0;font-size:27px;letter-spacing:-.05em}.spotlight-head p{max-width:390px;margin:0;color:#c5d9cc;font-size:13px}.specialty-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.specialty-tab{border:1px solid rgba(255,255,255,.24);background:transparent;color:#d4e5d7;border-radius:999px;padding:8px 14px;font-size:12px;cursor:pointer}.specialty-tab[aria-selected="true"]{background:var(--lime);border-color:var(--lime);color:var(--green-2);font-weight:800}.specialty-panel{display:none;grid-template-columns:1.08fr .92fr;gap:14px}.specialty-panel.active{display:grid}.specialty-main,.specialty-side{padding:21px;border-radius:17px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}.specialty-main h4{margin:0 0 8px;font-size:19px;letter-spacing:-.03em}.specialty-main>p{margin:0 0 16px;color:#c5d9cc;font-size:13px}.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.path-card{padding:13px;border-radius:13px;background:rgba(255,255,255,.09)}.path-card small{color:var(--lime);font-size:10px;font-weight:900;letter-spacing:.1em}.path-card strong{display:block;margin:6px 0 4px;font-size:13px}.path-card span{display:block;color:#c5d9cc;font-size:11px;line-height:1.55}.specialty-side h4{margin:0 0 12px;font-size:14px;color:var(--lime)}.topic-list{display:flex;gap:7px;flex-wrap:wrap}.topic-list span{padding:7px 9px;border-radius:9px;background:rgba(184,232,110,.12);color:#e6f3d2;font-size:11px}.pilot-callout{margin-top:16px;padding:12px;border-left:3px solid var(--lime);background:rgba(0,0,0,.12);color:#d8e8d9;font-size:12px;line-height:1.65}
-    .demo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}.phone{min-height:510px;border:10px solid #20333a;border-radius:31px;background:#f7fbf4;box-shadow:var(--shadow);overflow:hidden;max-width:420px;margin:0 auto;width:100%}.phone-top{height:36px;background:#20333a;color:#cbe0d4;display:flex;justify-content:center;align-items:center;font-size:10px}.phone-body{padding:21px}.phone-kicker{font-size:11px;color:var(--green);font-weight:900}.phone h3{margin:7px 0 14px;font-size:24px;letter-spacing:-.05em}.progress{height:7px;background:#dfe9df;border-radius:99px;overflow:hidden;margin:13px 0 22px}.progress i{display:block;width:52%;height:100%;background:var(--green);border-radius:99px}.quiz-card{padding:17px;border-radius:17px;background:#fff;border:1px solid var(--line)}.quiz-card small{color:var(--muted);font-size:11px}.quiz-card p{font-weight:800;font-size:15px;margin:10px 0 13px}.quiz-options{display:grid;gap:8px}.quiz-option{padding:10px 11px;text-align:left;border:1px solid var(--line);border-radius:11px;background:#fff;cursor:pointer;color:var(--ink-2);font-size:12px}.quiz-option:hover{border-color:var(--green)}.quiz-option.correct{border-color:var(--green);background:#e4f5e8;color:var(--green-2)}.quiz-option.wrong{border-color:#e6a094;background:#fff0ed;color:#8c3f39}.quiz-feedback{display:none;margin-top:13px;padding:11px;border-radius:11px;background:#eef7ec;color:var(--green-2);font-size:12px}.quiz-feedback.show{display:block}.demo-copy{padding:27px;border:1px solid var(--line);border-radius:23px;background:var(--cream)}.demo-copy h3{font-size:27px;letter-spacing:-.045em;line-height:1.15;margin:0 0 12px}.demo-copy>p{color:var(--muted);font-size:14px}.demo-line{display:flex;gap:12px;padding:15px 0;border-top:1px solid var(--line);font-size:13px}.demo-line b{color:var(--green);min-width:78px}.demo-callout{margin-top:18px;padding:16px;border-radius:14px;background:var(--green-2);color:#dfefdb;font-size:13px}.demo-callout strong{display:block;color:var(--lime);margin-bottom:4px}
-    .live-panel{display:grid;grid-template-columns:1.18fr .82fr;gap:18px}.live-main{min-height:400px;border-radius:22px;overflow:hidden;background:#20333a;color:#f6f9ed;position:relative}.live-scene{height:260px;background:linear-gradient(135deg,#456a63,#182d33 55%,#604b43);position:relative;display:flex;align-items:flex-end;padding:20px}.live-scene:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(184,232,110,.28),transparent 25%),linear-gradient(transparent 70%,rgba(0,0,0,.35))}.doctor-avatar{position:relative;width:115px;height:170px;border-radius:60px 60px 20px 20px;background:linear-gradient(#ebc5a4 0 28%,#e9edf2 28%);border:2px solid rgba(255,255,255,.46);box-shadow:12px 8px 0 rgba(0,0,0,.16)}.live-badge{position:absolute;right:18px;top:17px;padding:7px 10px;border-radius:8px;background:#e65c54;font-size:11px;font-weight:900}.live-caption{position:relative;margin-left:17px}.live-caption small{display:block;color:var(--lime);font-size:11px}.live-caption strong{display:block;font-size:20px;letter-spacing:-.04em}.live-controls{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid rgba(255,255,255,.12)}.live-controls span{color:#b9cbc0;font-size:12px}.live-controls b{color:var(--lime)}.live-side{display:grid;gap:13px}.live-card{padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--cream)}.live-card h4{margin:0 0 12px;font-size:16px}.live-card p{font-size:12px;color:var(--muted);margin:0}.queue{display:grid;gap:8px}.question{padding:10px;border-radius:10px;background:#f0f4ec;font-size:12px}.question em{font-style:normal;color:var(--green);font-weight:800}.live-card .button{display:block;margin-top:14px;text-align:center}
-    .button{border:0;border-radius:999px;padding:10px 14px;background:var(--green);color:#fff;font-size:12px;font-weight:800;cursor:pointer;text-decoration:none}.button.secondary{background:var(--cream);border:1px solid var(--line);color:var(--green-2)}.button:hover{filter:brightness(1.07)}
-    .compare{overflow:auto;border:1px solid var(--line);border-radius:20px;background:var(--cream)}table{border-collapse:collapse;width:100%;min-width:860px}th,td{text-align:left;padding:16px 17px;border-bottom:1px solid var(--line);vertical-align:top;font-size:12px}th{background:#e9f1eb;color:var(--green-2);font-size:11px;letter-spacing:.08em;text-transform:uppercase}tr:last-child td{border-bottom:0}td strong{font-size:14px;color:var(--ink)}.repo-link{color:var(--green);font-weight:800;text-decoration:none}.score{display:inline-flex;padding:4px 7px;border-radius:999px;background:var(--lime);font-size:11px;color:var(--green-2);font-weight:900}.score.mid{background:var(--yellow);color:#765519}.score.low{background:var(--rose);color:#7b3c35}.source-note{font-size:11px;color:var(--muted);margin-top:12px}.source-note a{color:var(--green)}
-    .roadmap{display:grid;grid-template-columns:1fr 1fr;gap:20px}.roadmap-card{padding:26px;border-radius:21px;background:var(--cream);border:1px solid var(--line)}.phase-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}.phase-panel{display:none}.phase-panel.active{display:block}.phase-panel h3{font-size:25px;margin:0 0 9px;letter-spacing:-.04em}.phase-panel>p{color:var(--muted);font-size:13px;margin:0 0 17px}.phase-list{display:grid;gap:10px}.phase-item{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:13px}.phase-item b{color:var(--green);font-size:11px;min-width:70px}.no-list{display:grid;gap:10px}.no-item{padding:13px;border-radius:12px;background:#fff4ef;color:#7d443e;font-size:13px}.no-item strong{display:block;color:#a94e43;margin-bottom:3px}
-    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{padding:20px;border:1px solid var(--line);border-radius:17px;background:var(--cream)}.metric b{display:block;font-size:27px;letter-spacing:-.05em;color:var(--green-2)}.metric span{display:block;margin-top:6px;color:var(--muted);font-size:12px}.metric small{display:block;margin-top:14px;color:var(--green);font-size:11px;font-weight:800}
-    .guardrail{display:grid;grid-template-columns:.96fr 1.04fr;gap:20px}.guard-card{padding:28px;border-radius:21px;border:1px solid var(--line);background:var(--cream)}.guard-card.alert{background:#fff4ea;border-color:#f0ceb7}.guard-card h3{margin:0 0 12px;font-size:24px;letter-spacing:-.04em}.guard-card p{color:var(--muted);font-size:13px}.guard-list{display:grid;gap:10px;margin-top:18px}.guard-list div{display:flex;gap:10px;font-size:13px}.guard-list b{color:#b2573e;min-width:90px}.reversal{margin-top:14px;padding:14px;border-left:3px solid var(--orange);background:#fffaf2;color:#735e45;font-size:12px}.reversal strong{color:#9d6232}
-    .sources{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.source{padding:16px;border:1px solid var(--line);border-radius:15px;background:var(--cream);font-size:12px}.source b{color:var(--green);margin-right:7px}.source a{color:var(--ink-2);font-weight:700;text-decoration:none}.source small{display:block;color:var(--muted);margin-top:5px}
-    footer{padding:38px 0 58px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.footer-line{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-line strong{color:var(--ink)}
-    @media(max-width:900px){.hero-grid,.thesis,.role-panel.active,.demo-wrap,.live-panel,.guardrail,.roadmap,.specialty-panel{grid-template-columns:1fr}.hero-board{min-height:340px}.loop{grid-template-columns:repeat(5,minmax(130px,1fr));overflow-x:auto;padding-bottom:8px}.agent-grid{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:1fr 1fr}}
-    @media(max-width:620px){.wrap{width:min(100% - 24px,1180px)}.nav{display:none}.hero{padding:56px 0 44px}.hero h1{font-size:45px}.hero-lede{font-size:16px}.board-flow{grid-template-columns:repeat(2,1fr)}.orbit{right:20px;top:114px;transform:scale(.78);transform-origin:top right}.section-head{display:block}.section-head p{margin-top:15px}.step-list,.agent-grid,.metrics,.sources,.path-grid{grid-template-columns:1fr}.spotlight-head{display:block}.spotlight-head p{margin-top:12px}.role-main,.role-side,.demo-copy,.roadmap-card,.guard-card{padding:21px}.phone{border-width:7px}.live-scene{height:225px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>科普模块设计方案 · 乳腺肿瘤 / 消化道肿瘤</title>
+<style>
+:root{
+  --ink:#18302C;        /* 墨松 */
+  --paper:#EDEEE7;      /* 档案纸 */
+  --paper-2:#F5F6F1;
+  --pine:#1F5E52;       /* 卫健松绿 */
+  --pine-pale:#DCE6E1;
+  --vermilion:#C0321C;  /* 印章朱红 · 仅红线 */
+  --amber:#9A6A1F;      /* 琥珀 · 仅待审 */
+  --rule:#C6CCC4;
+  --rule-soft:#DBE0D9;
+  --muted:#5C6B64;
+  --faint:#8A968F;
+  /* 产品自有色，仅限界面图内部 */
+  --terra:#C8704E;
+  --terra-pale:#FCF0EA;
+  --serif:'Songti SC','SimSun','Noto Serif SC',Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  --mono:'SFMono-Regular',Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:15px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--pine);color:var(--paper)}
+a{color:var(--pine);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--vermilion);outline-offset:3px}
+
+/* ─── 文件头 ─────────────────────────────── */
+.docmark{
+  border-bottom:1px solid var(--rule);background:var(--paper-2);
+  position:sticky;top:0;z-index:50;
+}
+.docmark-in{
+  max-width:1180px;margin:0 auto;padding:9px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  font-size:12px;color:var(--muted);letter-spacing:.02em;
+}
+.docmark b{color:var(--ink);font-weight:600}
+.docnav{display:flex;gap:18px;flex-wrap:wrap}
+.docnav a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
+.docnav a:hover{color:var(--pine);border-bottom-color:var(--pine)}
+.docnav a.is-active{color:var(--vermilion);border-bottom-color:var(--vermilion);font-weight:650}
+
+/* ─── 阅读导航 ───────────────────────────── */
+.reading-rail{
+  position:fixed;z-index:40;top:104px;
+  left:max(18px,calc((100vw - 1180px)/2 - 174px));width:148px;
+  padding:13px 12px 14px;border:1px solid var(--rule);background:rgba(245,246,241,.94);
+  box-shadow:0 8px 28px -20px rgba(24,48,44,.55);backdrop-filter:blur(8px);
+}
+.rail-title{font-size:10.5px;color:var(--faint);letter-spacing:.12em;margin-bottom:9px}
+.rail-list{display:grid;gap:2px}
+.rail-link{display:grid;grid-template-columns:24px 1fr;gap:5px;align-items:baseline;padding:5px 5px;color:var(--muted);text-decoration:none;font-size:12px;line-height:1.35;white-space:nowrap;border-left:2px solid transparent}
+.rail-link span{font-family:var(--mono);font-size:10px;color:var(--faint)}
+.rail-link:hover{color:var(--pine);background:rgba(31,94,82,.055)}
+.rail-link.is-active{color:var(--vermilion);border-left-color:var(--vermilion);background:rgba(192,50,28,.045);font-weight:650}
+.rail-link.is-active span{color:var(--vermilion)}
+.reading-progress{height:2px;margin:12px 5px 0;background:var(--rule-soft);overflow:hidden}
+.reading-progress i{display:block;width:0;height:100%;background:var(--vermilion);transition:width .15s ease}
+.cover-index{margin-top:24px;max-width:610px;padding-top:15px;border-top:1px solid var(--rule)}
+.cover-index-title{font-size:11px;color:var(--faint);letter-spacing:.12em;margin-bottom:9px}
+.cover-index-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 18px}
+.cover-index-link{display:grid;grid-template-columns:28px 1fr;gap:5px;align-items:baseline;padding:4px 0;color:var(--muted);font-size:12px;line-height:1.4;text-decoration:none;border-bottom:1px solid transparent}
+.cover-index-link span{font-family:var(--mono);font-size:10px;color:var(--vermilion)}
+.cover-index-link:hover{color:var(--pine);border-bottom-color:var(--pine-pale)}
+
+/* ─── 版心 ───────────────────────────────── */
+.sheet{max-width:1180px;margin:0 auto;padding:0 32px}
+.col{max-width:38em}
+section{padding:72px 0;border-top:1px solid var(--rule-soft);scroll-margin-top:78px}
+section:first-of-type{border-top:0}
+main > section[id]{border-top:2px solid var(--rule);}
+main > section[id] > .ann-layout > .col > .sec-no{
+  font-size:13px;letter-spacing:.14em;margin-bottom:12px;
+}
+main > section[id] > .ann-layout > .col > h2{
+  font-size:clamp(30px,3.4vw,42px);line-height:1.24;margin-bottom:24px;
+  padding-bottom:17px;border-bottom:3px solid var(--pine-pale);
+}
+
+/* ─── 封面 ───────────────────────────────── */
+.cover{padding:76px 0 64px;border-top:0}
+.cover-grid{display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:56px;align-items:start}
+.filecode{
+  font-family:var(--mono);font-size:11.5px;color:var(--faint);
+  letter-spacing:.09em;margin-bottom:26px;
+}
+h1.title{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(34px,5.2vw,58px);line-height:1.16;letter-spacing:-.012em;
+  margin:0 0 22px;
+}
+.title em{font-style:normal;display:block;color:var(--pine)}
+.standfirst{font-size:17.5px;line-height:1.72;color:#2C403A;max-width:33em;margin:0 0 26px}
+.standfirst strong{font-weight:600;color:var(--ink);box-shadow:inset 0 -.55em 0 var(--pine-pale)}
+.cover-meta{
+  display:flex;flex-wrap:wrap;gap:10px 26px;font-size:12.5px;color:var(--muted);
+  border-top:1px solid var(--rule);padding-top:16px;max-width:33em;
+}
+.cover-meta span b{color:var(--ink);font-weight:600}
+
+/* 骑缝章 */
+.stamp{
+  border:2px solid var(--vermilion);color:var(--vermilion);
+  padding:16px 14px;text-align:center;transform:rotate(-3.5deg);
+  background:rgba(192,50,28,.03);margin:2px 7px;
+}
+.stamp-t{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.35;letter-spacing:.04em}
+.stamp-r{height:1px;background:var(--vermilion);margin:9px 16px;opacity:.5}
+.stamp-s{font-size:10.5px;line-height:1.6;letter-spacing:.02em}
+.stamp-note{
+  margin-top:22px;font-size:12px;line-height:1.7;color:var(--muted);
+  border-left:2px solid var(--rule);padding-left:13px;
+}
+
+/* ─── 标题层级 ───────────────────────────── */
+.sec-no{
+  font-family:var(--mono);font-size:11.5px;color:var(--vermilion);
+  letter-spacing:.1em;display:block;margin-bottom:9px;
+}
+h2{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(25px,3.1vw,35px);line-height:1.3;letter-spacing:-.008em;
+  margin:0 0 16px;
+}
+h3{
+  font-family:var(--serif);font-size:20.5px;font-weight:600;line-height:1.45;
+  margin:40px 0 12px;
+}
+h4{font-size:14.5px;font-weight:650;margin:26px 0 8px;color:#243B35}
+p{margin:0 0 15px}
+.lede{font-size:16.5px;line-height:1.75;color:#2C403A;max-width:35em}
+.col p,.col ul,.col ol{max-width:38em}
+strong{font-weight:650}
+ul,ol{margin:0 0 15px;padding-left:1.15em}
+li{margin-bottom:7px}
+li::marker{color:var(--faint)}
+
+/* ─── 批注栏 ─────────────────────────────── */
+.ann-layout{display:grid;grid-template-columns:minmax(0,38em) 250px;gap:44px;align-items:start}
+.ann{font-size:12.5px;line-height:1.68;color:var(--muted);position:sticky;top:60px}
+.ann-item{border-left:2px solid var(--pine);padding:1px 0 1px 13px;margin-bottom:20px}
+.ann-item b{display:block;color:var(--ink);font-size:12px;font-weight:650;margin-bottom:3px}
+.ann-item.red{border-left-color:var(--vermilion)}
+.ann-item a{color:var(--pine);word-break:break-all}
+
+/* ─── 红线卡 ─────────────────────────────── */
+.redlines{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:28px 0}
+.rl{background:var(--paper-2);padding:18px 19px}
+.rl-h{display:flex;align-items:baseline;gap:8px;margin-bottom:7px}
+.rl-n{font-family:var(--mono);font-size:11px;color:var(--vermilion)}
+.rl-t{font-size:14px;font-weight:650;line-height:1.4}
+.rl-b{font-size:12.8px;line-height:1.66;color:var(--muted)}
+.rl.ok .rl-n{color:var(--pine)}
+
+/* ─── 表格 ───────────────────────────────── */
+.tw{overflow-x:auto;margin:22px 0;border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;font-size:13.2px;background:var(--paper-2);min-width:600px}
+th{
+  text-align:left;font-weight:650;padding:11px 14px;
+  background:var(--pine);color:var(--paper);font-size:12.5px;
+  letter-spacing:.01em;border-right:1px solid rgba(237,238,231,.18);
+}
+th:last-child{border-right:0}
+td{padding:11px 14px;border-top:1px solid var(--rule-soft);vertical-align:top;line-height:1.62}
+tbody tr:nth-child(even){background:rgba(31,94,82,.028)}
+td.no{font-family:var(--mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
+.pill{display:inline-block;font-size:11px;padding:1px 7px;border-radius:2px;white-space:nowrap;font-weight:600}
+.pill.g{background:var(--pine-pale);color:#17483E}
+.pill.r{background:#F6DED8;color:#9A2715}
+.pill.a{background:#F2E6CC;color:#7A5215}
+
+/* ─── 界面图外框 ─────────────────────────── */
+.figwrap{margin:38px 0 42px}
+.figcap{
+  display:flex;align-items:baseline;gap:11px;margin-bottom:13px;
+  padding-bottom:9px;border-bottom:1px solid var(--rule);
+}
+.figcap-n{font-family:var(--mono);font-size:11.5px;color:var(--vermilion);white-space:nowrap}
+.figcap-t{font-size:14px;font-weight:650}
+.figcap-d{font-size:12.5px;color:var(--muted);margin-left:auto;text-align:right}
+@media screen and (max-width:700px){.figcap{flex-wrap:wrap}.figcap-d{margin-left:0;text-align:left;flex-basis:100%}}
+.screen{
+  background:#fff;border:1px solid var(--rule);
+  box-shadow:0 1px 0 rgba(24,48,44,.05),0 10px 30px -18px rgba(24,48,44,.3);
+  overflow:hidden;
+}
+.fignote{font-size:12.3px;color:var(--muted);margin-top:11px;line-height:1.66;max-width:46em}
+.fignote b{color:var(--ink);font-weight:650}
+
+/* ══ 以下为界面图内部样式 · 使用产品赤陶色 ══ */
+.ui{font-family:var(--sans);font-size:13px;color:#252932;line-height:1.6;background:#F7F8FA}
+.ui *{box-sizing:border-box}
+.ui-top{
+  height:50px;background:#fff;border-bottom:1px solid #E8E9EC;
+  display:flex;align-items:center;gap:11px;padding:0 17px;
+}
+.ui-mark{
+  width:25px;height:25px;border-radius:7px;background:var(--terra-pale);
+  color:var(--terra);display:grid;place-items:center;font-size:13px;font-weight:700;flex:none;
+}
+.ui-brand{font-size:14px;font-weight:600}
+.ui-sep{width:1px;height:15px;background:#E8E9EC}
+.ui-sub{font-size:12.5px;color:#747985}
+.ui-tabs{display:flex;gap:3px;margin-left:14px}
+.ui-tab{font-size:12.5px;padding:5px 11px;border-radius:6px;color:#747985;white-space:nowrap}
+.ui-tab.on{background:var(--terra-pale);color:#B05C3C;font-weight:600}
+.ui-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.ui-avatar{width:26px;height:26px;border-radius:50%;background:#E4E6EA;display:grid;place-items:center;font-size:11px;color:#6B7280;flex:none}
+
+.ui-body{display:flex;min-height:430px}
+.ui-side{width:182px;flex:none;background:#fff;border-right:1px solid #E8E9EC;padding:13px 10px}
+.ui-sgroup{font-size:11px;color:#9AA0A8;padding:9px 8px 5px;letter-spacing:.02em}
+.ui-snav{
+  display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:7px;
+  font-size:12.8px;color:#4B5159;margin-bottom:1px;
+}
+.ui-snav.on{background:var(--terra-pale);color:#B05C3C;font-weight:600}
+.ui-dot{width:6px;height:6px;border-radius:50%;background:#C9CDD3;flex:none}
+.ui-snav.on .ui-dot{background:var(--terra)}
+.ui-badge{
+  margin-left:auto;font-size:10.5px;background:#F0F1F3;color:#6B7280;
+  padding:0 5px;border-radius:9px;line-height:16px;font-weight:600;
+}
+.ui-badge.hot{background:#FDEAE3;color:#B4472A}
+
+.ui-main{flex:1;padding:17px 19px;min-width:0;overflow:hidden}
+.ui-h{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.ui-h h5{margin:0;font-size:15px;font-weight:650}
+.ui-hsub{font-size:12.3px;color:#80868F;margin-bottom:15px}
+.ui-tagrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.ui-chip{font-size:11.5px;padding:3px 9px;border-radius:13px;background:#fff;border:1px solid #E2E4E8;color:#6B7280}
+.ui-chip.on{background:#3A3F47;border-color:#3A3F47;color:#fff}
+
+.ui-card{background:#fff;border:1px solid #E8E9EC;border-radius:9px;padding:13px 15px;margin-bottom:10px}
+.ui-card.flag{border-left:3px solid var(--terra)}
+.ui-card.risk{border-left:3px solid #B65438}
+.ui-card.pass{border-left:3px solid #4E8A6E}
+.ui-crow{display:flex;align-items:flex-start;gap:10px}
+.ui-ct{font-size:13.5px;font-weight:620;line-height:1.45}
+.ui-cm{font-size:12.2px;color:#80868F;margin-top:3px;line-height:1.6}
+.ui-cb{margin-left:auto;display:flex;gap:6px;flex:none}
+
+.tg{font-size:11px;padding:1.5px 7px;border-radius:4px;background:#F2F3F5;color:#767C86;white-space:nowrap;font-weight:500;display:inline-flex;align-items:center;gap:4px}
+.tg.t{background:var(--terra-pale);color:#B05C3C}
+.tg.r{background:#FDE8E2;color:#A8402A}
+.tg.b{background:#EBF1FB;color:#3F6AA8}
+.tg.g{background:#E3EFE8;color:#2F6B4D}
+.tg.y{background:#F6EDD8;color:#86651C}
+.tg.gray{background:#F2F3F5;color:#767C86}
+
+.ui-btn{
+  font-size:12px;padding:5px 11px;border-radius:6px;border:1px solid #DFE1E6;
+  background:#fff;color:#4B5159;white-space:nowrap;font-weight:500;display:inline-flex;align-items:center;gap:5px;
+}
+.ui-btn.p{background:var(--terra);border-color:var(--terra);color:#fff}
+.ui-btn.q{border-color:transparent;background:transparent;color:#80868F}
+
+.ui-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ui-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ui-stat{background:#fff;border:1px solid #E8E9EC;border-radius:9px;padding:12px 14px}
+.ui-sv{font-size:21px;font-weight:650;line-height:1.2;letter-spacing:-.01em}
+.ui-sl{font-size:11.5px;color:#80868F;margin-top:3px}
+.ui-sd{font-size:11px;color:#4E8A6E;margin-top:5px}
+.ui-sd.down{color:#B65438}
+
+.ui-quote{
+  background:#FAFBFC;border:1px solid #EDEFF2;border-radius:7px;
+  padding:9px 12px;font-size:12.3px;color:#56606B;line-height:1.65;margin:8px 0;
+}
+.ui-quote b{color:#252932;font-weight:620}
+.ui-src{font-size:11px;color:#9AA0A8;margin-top:5px;display:flex;gap:7px;flex-wrap:wrap}
+
+.ui-bar{height:5px;border-radius:3px;background:#EDEFF2;overflow:hidden;margin-top:7px}
+.ui-bar i{display:block;height:100%;background:var(--terra);border-radius:3px}
+.ui-bar i.g{background:#4E8A6E}
+.ui-bar i.y{background:#C79A3C}
+
+/* 手机壳 */
+.phone{
+  width:258px;flex:none;background:#fff;border:1px solid #DDE0E4;border-radius:19px;
+  overflow:hidden;box-shadow:0 8px 24px -14px rgba(24,48,44,.35);
+}
+.ph-top{
+  background:var(--terra);color:#fff;padding:11px 14px 13px;
+}
+.ph-top-r{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;opacity:.85;margin-bottom:7px}
+.ph-t{font-size:15px;font-weight:600}
+.ph-s{font-size:11.5px;opacity:.9;margin-top:2px}
+.ph-body{padding:12px 13px;background:#F7F8FA;min-height:300px}
+.ph-card{background:#fff;border-radius:10px;padding:11px 12px;margin-bottom:9px;border:1px solid #EDEFF2}
+.ph-ct{font-size:13px;font-weight:620;line-height:1.45}
+.ph-cm{font-size:11.8px;color:#80868F;line-height:1.6;margin-top:3px}
+.ph-nav{
+  display:flex;border-top:1px solid #EDEFF2;background:#fff;
+}
+.ph-ni{flex:1;text-align:center;padding:8px 0 10px;font-size:10.5px;color:#A0A6AD}
+.ph-ni.on{color:var(--terra);font-weight:600}
+.ph-nd{width:15px;height:15px;border-radius:5px;background:#E8EAED;margin:0 auto 3px}
+.ph-ni.on .ph-nd{background:var(--terra-pale)}
+
+/* 聊天气泡 */
+.bub{max-width:88%;padding:8px 11px;border-radius:11px;font-size:12.3px;line-height:1.62;margin-bottom:8px}
+.bub.ai{background:#fff;border:1px solid #EDEFF2;border-top-left-radius:3px}
+.bub.me{background:var(--terra);color:#fff;margin-left:auto;border-top-right-radius:3px}
+.bub-src{font-size:10.5px;color:#9AA0A8;margin-top:6px;padding-top:6px;border-top:1px dashed #E4E6EA}
+
+/* 流程条 */
+.flow{display:flex;align-items:stretch;gap:0;margin:26px 0;border:1px solid var(--rule);background:var(--paper-2);overflow-x:auto}
+.fl{flex:1;min-width:132px;padding:15px 15px;border-right:1px solid var(--rule-soft);position:relative}
+.fl:last-child{border-right:0}
+.fl-n{font-family:var(--mono);font-size:10.5px;color:var(--vermilion);letter-spacing:.08em}
+.fl-t{font-size:13.5px;font-weight:650;margin:6px 0 5px;line-height:1.4}
+.fl-b{font-size:12px;color:var(--muted);line-height:1.6}
+.fl-who{font-size:11px;color:var(--pine);margin-top:7px;font-weight:600}
+.fl.gate{background:rgba(192,50,28,.04)}
+.fl.gate .fl-who{color:var(--vermilion)}
+
+/* 引用块 */
+.pull{
+  border-left:3px solid var(--vermilion);padding:4px 0 4px 20px;margin:30px 0;
+  font-family:var(--serif);font-size:19.5px;line-height:1.62;max-width:30em;
+}
+.pull cite{display:block;font-family:var(--sans);font-size:12.5px;font-style:normal;color:var(--muted);margin-top:10px}
+
+/* 对照 */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0}
+.vs-c{background:var(--paper-2);padding:17px 19px}
+.vs-h{font-size:12px;font-weight:650;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--rule-soft)}
+.vs-c.bad .vs-h{color:var(--vermilion)}
+.vs-c.good .vs-h{color:var(--pine)}
+.vs-c ul{margin:0;padding-left:1.05em;font-size:13px}
+.vs-c li{margin-bottom:6px;color:var(--muted)}
+.vs-c li b{color:var(--ink)}
+@media screen and (max-width:700px){.vs{grid-template-columns:1fr}}
+
+/* 阶段 */
+.phase{border-top:1px solid var(--rule);padding:19px 0;display:grid;grid-template-columns:132px minmax(0,1fr);gap:26px}
+.phase-k{font-size:13px}
+.phase-k b{display:block;font-family:var(--serif);font-size:17px;font-weight:600}
+.phase-k span{font-size:12px;color:var(--muted)}
+.phase-v ul{margin:0;padding-left:1.05em;font-size:13.5px}
+@media screen and (max-width:760px){.phase{grid-template-columns:1fr;gap:8px}}
+
+/* 四屏并排时压缩手机宽度 */
+.phonerow .phone{width:244px}
+@media screen and (max-width:1200px){.phonerow .phone{width:232px}}
+
+/* 征求意见块 */
+.askbox{
+  border:1px solid var(--pine);background:rgba(31,94,82,.045);
+  padding:17px 20px;margin:30px 0;max-width:38em;
+}
+.askbox-h{
+  font-family:var(--serif);font-size:16px;font-weight:600;color:var(--pine);
+  margin-bottom:9px;
+}
+.askbox ul{margin:0;padding-left:1.05em;font-size:13.5px;line-height:1.72}
+.askbox li{margin-bottom:8px;color:#2C403A}
+.askbox li:last-child{margin-bottom:0}
+.askbox li::marker{color:var(--pine)}
+
+/* 专科对照 */
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0}
+.spec-c{background:var(--paper-2);padding:16px 18px}
+.spec-h{
+  font-size:13px;font-weight:650;margin-bottom:9px;padding-bottom:7px;
+  border-bottom:1px solid var(--rule-soft);color:var(--pine);
+}
+.spec-c ul{margin:0;padding-left:1.05em;font-size:12.8px;line-height:1.7}
+.spec-c li{margin-bottom:5px;color:var(--muted)}
+.spec-c li b{color:var(--ink)}
+@media screen and (max-width:700px){.spec{grid-template-columns:1fr}}
+
+/* 脚注 */
+.refs{font-size:12.8px;line-height:1.72;counter-reset:r}
+.refs li{margin-bottom:9px;color:var(--muted)}
+.refs li b{color:var(--ink);font-weight:600}
+
+.foot{
+  border-top:1px solid var(--rule);padding:28px 0 60px;font-size:12.3px;color:var(--faint);line-height:1.7;
+}
+
+@media screen and (max-width:980px){
+  .ann-layout{grid-template-columns:1fr}
+  .ann{position:static;border-top:1px solid var(--rule);padding-top:16px;max-width:38em}
+  .cover-grid{grid-template-columns:1fr;gap:34px}
+  .stamp{max-width:240px;transform:rotate(-2deg)}
+}
+@media screen and (min-width:1401px){
+  .docnav{display:none}
+}
+@media screen and (max-width:1400px){
+  .reading-rail{display:none}
+  .docmark-in{align-items:flex-start}
+  .docnav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+  .docnav a{white-space:nowrap}
+}
+@media screen and (max-width:860px){
+  .ui-side{display:none}
+  .ui-tabs{display:none}
+}
+@media screen and (max-width:600px){
+  .sheet{padding:0 20px}
+  .docmark-in{display:block;padding:8px 20px}
+  .docnav{margin-top:5px;gap:15px}
+  .cover-index-list{grid-template-columns:1fr}
+  section{padding:42px 0}
+  .ui-grid3,.ui-grid2{grid-template-columns:1fr}
+}
+
+/* ─── 打印 / PDF 导出 ─────────────────────── */
+@page{
+  size:A4;
+  margin:14mm 12mm 16mm;
+}
+@media print{
+  html{scroll-behavior:auto}
+  body{background:#fff;font-size:10.2pt;line-height:1.68}
+
+  /* 顶部导航在纸面上无意义 */
+  .docmark,.reading-rail,.cover-index{display:none}
+
+  .sheet{max-width:none;padding:0}
+  .col,.col p,.col ul,.col ol,.lede,.standfirst{max-width:none}
+
+  /* 章节从新页开始，但封面后紧跟的 01 不强制断页 */
+  section{
+    break-before:page;
+    page-break-before:always;
+    padding:0 0 8mm;
+    border-top:0;
+  }
+  section.cover{
+    break-before:auto;
+    page-break-before:auto;
+    padding:0 0 10mm;
+  }
+
+  /* 标题不与正文分离 */
+  h1,h2,h3,h4{
+    break-after:avoid;
+    page-break-after:avoid;
+    break-inside:avoid;
+  }
+  main > section[id] > .ann-layout > .col > h2{
+    font-size:16pt;line-height:1.3;margin-bottom:4mm;padding-bottom:0;border-bottom:0;
+  }
+  .sec-no{break-after:avoid;page-break-after:avoid}
+
+  /* 批注栏在纸面上无法"侧挂"，改为正文后的整块 */
+  .ann-layout{display:block}
+  .ann{
+    position:static;
+    margin:6mm 0 0;
+    padding-top:4mm;
+    border-top:1px solid var(--rule);
+    font-size:8.6pt;
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+  .ann-item{margin-bottom:3mm}
+
+  /* 界面图：整体不可分割，且缩放适配页宽 */
+  .figwrap{
+    break-inside:avoid;
+    page-break-inside:avoid;
+    margin:6mm 0;
+  }
+  .screen{
+    box-shadow:none;
+    border:1px solid #C6CCC4;
+    overflow:visible;
+  }
+  .screen>.ui{min-width:0}
+  .figwrap::after{display:none}
+
+  /* 界面图内部整体缩字，保证单张不超过一页 */
+  .ui{font-size:10.6px;line-height:1.5}
+  .ui-top{height:38px;padding:0 12px}
+  .ui-body{min-height:0}
+  .ui-side{width:142px;padding:9px 7px}
+  .ui-main{padding:11px 13px}
+  .ui-card{padding:8px 10px;margin-bottom:6px}
+  .ui-h h5{font-size:12px}
+  .ui-ct{font-size:11px}
+  .ui-cm,.ui-hsub,.ui-quote{font-size:10px}
+  .ui-src,.tg,.ui-btn{font-size:9px}
+  .ui-sv{font-size:16px}
+  .ui-stat{padding:8px 10px}
+
+  /* 手机屏：四台并排且整体压缩 */
+  .phonerow{flex-wrap:nowrap!important;gap:5px!important;padding:9px 7px!important}
+  .phonerow .phone{width:24%!important;min-width:0}
+  .phone{border-radius:11px}
+  .ph-top{padding:6px 8px 7px}
+  .ph-t{font-size:10.6px;line-height:1.35}
+  .ph-s,.ph-top-r{font-size:8.4px}
+  .ph-body{padding:7px 7px;min-height:0}
+  .ph-card{padding:7px 8px;margin-bottom:5px;border-radius:7px}
+  .ph-ct{font-size:9.8px;line-height:1.38}
+  .ph-cm{font-size:8.8px;line-height:1.45}
+  .ph-ni{font-size:8px;padding:5px 0 6px}
+  .ph-nd{width:11px;height:11px;margin-bottom:2px}
+  .bub{font-size:9.2px;padding:5px 7px;margin-bottom:5px}
+  .bub-src{font-size:8.2px;margin-top:4px;padding-top:4px}
+
+  /* 表格整块不跨页，过宽时缩字 */
+  .tw{break-inside:avoid;page-break-inside:avoid;overflow:visible}
+  table{min-width:0;font-size:8.4pt}
+  th,td{padding:5px 7px}
+
+  /* 卡片类元素不跨页 */
+  .redlines,.vs,.spec,.flow,.askbox,.phase,.pull{
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+  .redlines{grid-template-columns:1fr 1fr}
+  .rl{padding:11px 12px}
+  .rl-t{font-size:9.5pt}
+  .rl-b{font-size:8.4pt}
+
+  .flow{flex-wrap:nowrap;overflow:visible}
+  .fl{min-width:0;padding:9px 9px}
+  .fl-t{font-size:9pt}
+  .fl-b{font-size:8pt}
+
+  .spec-c{padding:10px 11px}
+  .spec-c ul{font-size:8.4pt}
+
+  .askbox{padding:11px 13px;margin:5mm 0}
+  .askbox-h{font-size:11pt}
+  .askbox ul{font-size:8.8pt}
+
+  .phase{grid-template-columns:34mm 1fr;gap:6mm;padding:4mm 0}
+  .phase-k b{font-size:12pt}
+  .phase-k span{font-size:8.2pt}
+  .phase-v ul{font-size:8.8pt}
+
+  .pull{font-size:12.5pt;margin:5mm 0}
+  .pull cite{font-size:8.4pt}
+
+  .cover-grid{display:block}
+  h1.title{font-size:26pt;margin-bottom:5mm}
+  .standfirst{font-size:10.6pt}
+  .stamp{max-width:52mm;margin:5mm 0 0;transform:none;padding:9px 8px}
+  .stamp-t{font-size:10.5pt}
+  .stamp-s{font-size:7.4pt}
+  .stamp-note{margin-top:3mm;font-size:8.2pt}
+
+  h2{font-size:16pt}
+  h3{font-size:11.6pt;margin:5mm 0 2mm}
+  h4{font-size:9.8pt;margin:4mm 0 1.5mm}
+
+  .figcap{margin-bottom:2mm;padding-bottom:1.5mm}
+  .figcap-t{font-size:9.4pt}
+  .figcap-d{font-size:8.2pt}
+  .fignote{font-size:8.2pt;margin-top:2mm}
+
+  .refs{font-size:8.4pt}
+  .refs li{margin-bottom:2.5mm}
+
+  a{color:var(--ink);text-decoration:none}
+
+  /* 避免孤行 */
+  p,li{orphans:3;widows:3}
+}
+/* 界面图按稿面尺寸保留，窄屏整体横向滚动，不重排 */
+@media screen and (max-width:820px){
+  .screen{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .screen>.ui{min-width:840px}
+  .figwrap::after{
+    content:'← 左右滑动查看完整界面 →';display:block;margin-top:8px;
+    font-size:11.5px;color:var(--faint);letter-spacing:.02em;
+  }
+}
+</style>
+<style id="kepu-style-overrides">
+/* KePu visual language: warm paper, health-green, lime highlights, rounded information cards. */
+:root{
+  --ink:#142530;--paper:#f5f7f1;--paper-2:#fffdf8;--pine:#156b58;--pine-pale:#d9f0e6;
+  --vermilion:#ef8d58;--amber:#ffd773;--rule:#d9e2dd;--rule-soft:#e9efe9;
+  --muted:#6d7e80;--faint:#8ba09a;--terra:#ef8d58;--terra-pale:#fff1e8;
+  --serif:"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --sans:"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+}
+html{scroll-padding-top:90px}
+body{background:var(--paper);color:var(--ink);font-family:"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.65}
+h1,h2,h3,h4,h5,h6,.title,.pull,.stamp-t,.phase-k b{font-family:var(--sans)!important}
+a{color:var(--pine)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+
+/* KePu-style top bar and left reading rail */
+.docmark{background:rgba(245,247,241,.88);border-bottom:1px solid rgba(217,226,221,.82);box-shadow:0 8px 28px rgba(20,37,48,.05);backdrop-filter:blur(16px)}
+.docmark-in{width:min(1180px,calc(100% - 40px));max-width:none;height:68px;margin:0 auto;padding:0;display:flex;align-items:center;gap:11px}
+.docmark-in::before{content:"K";width:34px;height:34px;border-radius:11px;background:var(--pine);color:var(--amber);display:grid;place-items:center;font-size:17px;font-weight:900;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);flex:none}
+.docmark-in>span{color:var(--ink);font-size:13px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+.docmark-in>span b{color:var(--ink);font-weight:800}
+.docnav{display:none!important}
+.docnav a{color:var(--muted);text-decoration:none;border:0;padding:6px 0;white-space:nowrap}
+.docnav a:hover{color:var(--pine);border:0}
+.docnav a.is-active{color:var(--pine);border-bottom:2px solid var(--amber);font-weight:800}
+.reading-rail{top:91px;left:max(12px,calc((100vw - 1180px)/2 - 142px));width:124px;padding:14px 9px 11px;border:1px solid var(--rule);border-radius:17px;background:rgba(255,253,248,.93);box-shadow:0 18px 42px rgba(20,37,48,.10);backdrop-filter:blur(16px)}
+.rail-title{margin:0 5px 11px;color:var(--pine);font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.rail-list{gap:3px}
+.rail-link{grid-template-columns:20px 1fr;gap:3px;padding:7px 6px;color:var(--muted);font-size:11px;line-height:1.35;border-left:3px solid transparent;border-radius:0 10px 10px 0}
+.rail-link span{color:var(--faint);font-size:10px;font-weight:900}
+.rail-link:hover{color:var(--pine);background:#e7f1eb}
+.rail-link.is-active{color:var(--green-2,var(--pine));border-left-color:var(--pine);background:var(--amber);font-weight:900}
+.rail-link.is-active span{color:var(--pine)}
+.reading-progress{height:4px;margin:14px 5px 0;border-radius:99px;background:#e1ebe3}
+.reading-progress i{background:var(--pine);border-radius:99px}
+.rail-top{display:block;margin:12px 5px 0;padding:9px 3px 2px;border-top:1px solid var(--rule);color:var(--pine);font-size:10.5px;font-weight:900;line-height:1.3;text-align:center;text-decoration:none;white-space:nowrap}
+.rail-top:hover{color:var(--green-2,#0d4d42)}
+
+/* Cover */
+.sheet{width:min(1180px,calc(100% - 40px));max-width:none;margin:0 auto;padding:0}
+.cover{padding:88px 0 80px;background:radial-gradient(circle at 77% 28%,rgba(184,232,110,.42),transparent 20%),radial-gradient(circle at 10% 0,rgba(151,199,232,.25),transparent 28%),var(--paper-2);border-bottom:1px solid var(--rule);border-radius:0 0 28px 28px}
+.cover-grid{grid-template-columns:1.06fr .94fr;gap:58px;align-items:center}
+.filecode{margin-bottom:25px;color:var(--pine);font-size:11px;font-weight:900;letter-spacing:.17em;text-transform:uppercase}
+h1.title{max-width:720px;margin:17px 0 20px;font-family:inherit;font-size:clamp(42px,6.3vw,76px);font-weight:900;line-height:.99;letter-spacing:-.07em}
+.title em{color:var(--pine)}
+.standfirst{max-width:650px;color:var(--ink-2,#27414a);font-size:18px;line-height:1.75}
+.standfirst strong{box-shadow:inset 0 -10px 0 var(--amber)}
+.cover-meta{max-width:650px;display:flex;gap:9px;flex-wrap:wrap;border-top:0;padding-top:8px}
+.cover-meta span{padding:7px 11px;border:1px solid var(--rule);border-radius:999px;background:rgba(255,255,255,.78);color:var(--muted);font-size:12px}
+.cover-meta span b{color:var(--ink);font-weight:800}
+.cover-index{max-width:650px;margin-top:25px;padding-top:17px;border-top:1px solid var(--rule)}
+.cover-index-title{color:var(--pine);font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+.cover-index-link{padding:6px 0;color:var(--muted);font-size:12px;border:0}
+.cover-index-link:hover{color:var(--pine);border:0}
+.cover-index-link span{color:var(--pine);font-size:10px;font-weight:900}
+.stamp{margin:0;padding:26px 22px;border:0;border-radius:28px;background:var(--green-2,#0d4d42);color:#f6faef;transform:none;box-shadow:0 18px 55px rgba(20,37,48,.1)}
+.stamp-t{color:var(--amber);font-size:22px;font-weight:900;letter-spacing:-.03em}
+.stamp-r{background:rgba(255,215,115,.55);margin:14px 18px}
+.stamp-s{color:#c6ddd0;font-size:11px}
+.stamp-note{margin-top:18px;padding:15px 16px;border:1px solid var(--rule);border-left:3px solid var(--amber);border-radius:0 14px 14px 0;background:rgba(255,253,248,.8);color:var(--muted);font-size:12px}
+
+/* Sections and hierarchy */
+main.sheet>section{padding:86px 0;border:0;scroll-margin-top:90px}
+main.sheet>section[id]{border-top:1px solid var(--rule);}
+.ann-layout{grid-template-columns:minmax(0,1.08fr) minmax(250px,.72fr);gap:24px}
+.col{max-width:none}
+.col p,.col ul,.col ol{max-width:44em}
+main.sheet>section[id]>.ann-layout>.col>.sec-no{margin-bottom:13px;color:var(--pine);font-family:inherit;font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+main.sheet>section[id]>.ann-layout>.col>h2{max-width:720px;margin:10px 0 22px;padding:0 0 18px;border-bottom:2px solid var(--pine-pale);font-family:inherit;font-size:clamp(32px,4vw,49px);font-weight:900;line-height:1.06;letter-spacing:-.06em}
+h3{font-family:inherit;font-size:25px;font-weight:900;line-height:1.18;letter-spacing:-.04em;margin:44px 0 14px}
+h4{font-size:14px;font-weight:900;letter-spacing:.02em;color:var(--pine);margin:28px 0 9px}
+.lede{color:var(--ink-2,#27414a);font-size:16px;line-height:1.8}
+.ann{top:91px;padding:22px;border:1px solid #cbded1;border-radius:21px;background:#e7f1eb;box-shadow:none;color:var(--muted)}
+.ann-item{border-left:3px solid var(--pine);padding:2px 0 2px 14px;margin-bottom:21px}
+.ann-item.red{border-left-color:var(--orange,var(--terra))}
+.ann-item b{color:var(--pine-2,var(--green-2));font-weight:900}
+.pull{max-width:34em;margin:34px 0;padding:20px 22px;border:0;border-left:4px solid var(--orange,var(--terra));border-radius:0 18px 18px 0;background:var(--paper-2);box-shadow:0 10px 28px rgba(20,37,48,.06);font-family:inherit;font-size:19px;font-weight:800;line-height:1.48}
+.pull cite{font-size:11px;font-weight:400}
+.askbox{max-width:44em;margin:30px 0;padding:22px 24px;border:0;border-radius:21px;background:var(--green-2,#0d4d42);color:#f6faef;box-shadow:0 18px 35px rgba(20,37,48,.09)}
+.askbox-h{color:var(--amber);font-family:inherit;font-size:16px;font-weight:900}
+.askbox li{color:#d3e5d7}
+
+/* KePu-style cards, comparison blocks and evidence tables */
+.redlines,.vs,.spec{border:1px solid var(--rule);border-radius:21px;overflow:hidden;background:var(--rule);box-shadow:0 12px 30px rgba(20,37,48,.06)}
+.rl,.vs-c,.spec-c{padding:22px;background:var(--paper-2)}
+.rl-t,.spec-h{font-weight:900;color:var(--ink)}
+.vs-c.bad .vs-h{color:#b2573e}.vs-c.good .vs-h{color:var(--pine)}
+.tw{margin:25px 0;border:1px solid var(--rule);border-radius:20px;overflow:auto;background:var(--paper-2);box-shadow:0 12px 30px rgba(20,37,48,.06)}
+table{background:var(--paper-2);font-size:13px}
+th{padding:14px 16px;background:var(--green-2,#0d4d42);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+td{padding:14px 16px;border-top:1px solid var(--rule)}
+tbody tr:nth-child(even){background:#f0f4ec}
+.pill{padding:4px 8px;border-radius:999px;font-size:10px;font-weight:900}
+.pill.g{background:var(--pine-pale);color:var(--pine)}.pill.r{background:#fff0ed;color:#a94e43}.pill.a{background:#fff4d8;color:#765519}
+.figwrap{margin:42px 0 48px}
+.figcap{margin-bottom:16px;padding-bottom:11px;border-bottom:1px solid var(--rule)}
+.figcap-n{color:var(--pine);font-size:10px;font-weight:900;letter-spacing:.12em}
+.figcap-t{font-size:14px;font-weight:900}.figcap-d{color:var(--muted);font-size:12px}
+.screen{border:1px solid var(--rule);border-radius:23px;box-shadow:0 18px 42px rgba(20,37,48,.1)}
+.flow{border:1px solid var(--rule);border-radius:20px;background:var(--paper-2);box-shadow:0 12px 30px rgba(20,37,48,.06)}
+.fl{padding:18px 16px;border-right:1px solid var(--rule)}
+.fl-n{color:var(--pine);font-weight:900}.fl-who{color:var(--pine)}.fl.gate{background:#fff4ea}.fl.gate .fl-who{color:#b2573e}
+.phase{border-top:1px solid var(--rule);padding:22px 0}.phase-k b{font-family:inherit;font-size:18px;font-weight:900}.phase-k span{color:var(--muted)}
+.foot{padding:36px 0 62px;border-top:1px solid var(--rule);color:var(--muted)}
+
+@media screen and (max-width:1400px){
+  .reading-rail{display:none}
+  .docnav{display:none!important}
+}
+@media screen and (max-width:980px){
+  main.sheet>section{padding:66px 0}
+  .ann-layout{grid-template-columns:1fr;gap:28px}
+  .ann{position:static}
+  .cover-grid{grid-template-columns:1fr;gap:36px}
+  .stamp{max-width:320px}
+}
+@media screen and (max-width:600px){
+  .sheet{width:min(100% - 24px,1180px)}
+  .docmark-in{width:calc(100% - 24px);height:auto;min-height:68px;padding:9px 0;display:block}
+  .docmark-in::before{display:inline-grid;vertical-align:middle;margin-right:8px}
+  .docmark-in>span{font-size:12px}
+  .docnav{display:none!important}
+  .cover{padding:58px 0 52px;border-radius:0 0 22px 22px}
+  h1.title{font-size:clamp(42px,13vw,58px)}
+  main.sheet>section{padding:56px 0}
+  main.sheet>section[id]>.ann-layout>.col>h2{font-size:clamp(31px,9vw,40px)}
+  .cover-meta span{font-size:11px}
+}
+@media print{
+  .docmark,.reading-rail,.cover-index{display:none!important}
+  main.sheet>section[id]>.ann-layout>.col>h2{font-size:16pt;line-height:1.3;padding-bottom:0;border-bottom:0}
+}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="#top"><span class="brand-mark">K</span><span>KePu <small>health literacy lab</small></span></a>
-      <nav class="nav" aria-label="主要导航"><a href="#thesis">判断</a><a href="#roles">场景</a><a href="#agents">产品</a><a href="#open-source">开源</a><a href="#roadmap">落地</a></nav>
+
+<div class="docmark" id="top">
+  <div class="docmark-in">
+    <span><b>科普模块设计方案</b> · 乳腺肿瘤 / 消化道肿瘤</span>
+    <nav class="docnav">
+      <a href="#why">背景</a>
+      <a href="#redline">红线</a>
+      <a href="#scene">工作流</a>
+      <a href="#design">患者侧</a>
+      <a href="#game">学习闭环</a>
+      <a href="#live">直播</a>
+      <a href="#credit">业绩</a>
+      <a href="#plan">分期</a>
+      <a href="#metric">指标</a>
+      <a href="#refs">依据</a>
+    </nav>
+  </div>
+</div>
+
+<aside class="reading-rail" aria-label="章节导航">
+  <div class="rail-title">章节导航</div>
+  <nav id="rail-list" class="rail-list" aria-label="章节导航列表"></nav>
+  <div class="reading-progress" aria-hidden="true"><i id="reading-progress-fill"></i></div>
+  <a class="rail-top" href="#top">↑ 返回顶部</a>
+</aside>
+
+<main class="sheet">
+
+<!-- ════════ 封面 ════════ -->
+<section class="cover">
+<div class="cover-grid">
+<div>
+  <div class="filecode">科普模块设计方案 / 乳腺肿瘤 · 消化道肿瘤 / 征求意见稿</div>
+  <h1 class="title">把门诊里反复回答的那些话<em>讲一次，留下来，送到对的人手里</em></h1>
+  <p class="standfirst">
+    2025 年 11 月三部门十条负面清单之后，科普的合规门槛明显提高，
+    而职称评审对科普作品的要求在多省落地。这份方案想解决的是同一件事的两端：
+    <strong>让您做科普时不必自己盯着红线</strong>，
+    <strong>也让做过的每一条都留下可提交的记录</strong>。
+  </p>
+  <p class="standfirst" style="font-size:15.5px;color:var(--muted)">
+    下面是我们基于现有医患端的设计构想与界面示意，供您判断哪些有用、哪些不符合实际科室情况。
+    每一节末尾列出了我们尚未想清楚、希望听取您意见的问题。
+  </p>
+  <div class="cover-meta">
+    <span><b>适用</b> 乳腺肿瘤 · 消化道肿瘤专病门诊与治疗期管理</span>
+    <span><b>日期</b> 2026-11-24</span>
+    <span><b>性质</b> 设计构想 + 界面示意 · 非最终产品</span>
+  </div>
+  <div class="cover-index" aria-label="章节索引">
+    <div class="cover-index-title">阅读全文</div>
+    <nav id="cover-index-list" class="cover-index-list" aria-label="章节索引列表"></nav>
+  </div>
+</div>
+<aside>
+  <div class="stamp">
+    <div class="stamp-t">界面均为示意<br>非可运行软件</div>
+    <div class="stamp-r"></div>
+    <div class="stamp-s">文中数据为演示占位值<br>示例医学文案未经审核</div>
+  </div>
+  <p class="stamp-note">
+    方案中的示例内容只用于说明产品结构，不代表任何诊疗口径。
+    实际上线时，所有医学内容以贵院知识库与科室共识为准。
+  </p>
+</aside>
+</div>
+</section>
+
+<!-- ════════ 一、判断 ════════ -->
+<section id="why">
+<div class="ann-layout">
+<div class="col">
+  <span class="sec-no">01 — 背景</span>
+  <h2>合规门槛和职称要求，在同一年抬高了</h2>
+
+  <p class="lede">
+    这一节只陈述政策与证据现状。如果其中与贵院实际执行口径不符，
+    请以院内文件为准，也请指出来——我们的规则库需要按院配置。
+  </p>
+
+  <p>
+    2025 年 7 月，中央网信办、国家卫健委等部门联合发布
+    《关于规范"自媒体"医疗科普行为的通知》，从平台侧开始治理。
+    同年 9 月 15 日，抖音电商把"违规医疗营销"并入《创作者违规营销内容处置细则》，
+    明确禁止用医生这类"特殊身份"带货，也禁止"以医疗科普方式进行商业营销"。
+    11 月 7 日，国家卫健委办公厅、国家中医药局综合司、国家疾控局综合司联合印发
+    《医务人员互联网健康科普负面行为清单（试行）》，十条，试行。
+  </p>
+
+  <p>
+    与此同时，另一侧的要求在收紧。2021 年三部门《关于深化卫生专业技术人员职称制度改革的
+    指导意见》已把科普作品写进业绩成果代表作；到 2025 年，河南、四川等地把健康科普
+    从"加分项"变成了高级职称申报的"准入项"——河南要求临床、护理、技术人员每年开展
+    健康科普活动不少于 2 次，四川要求每年面向公众健康讲座 1 次或发表科普作品 1 篇。
+    各省口径差异很大，广西要求正副高提交本专业科普 5 篇、每篇不少于 1500 字，
+    天津代表作最低 1 项。
+  </p>
+
+  <div class="pull">
+    做科普这件事，<br>要求变多了，可操作的空间变窄了。
+    <cite>这是方案要解决的问题</cite>
+  </div>
+
+  <h3>我们在现有医患端里观察到的三件事</h3>
+
+  <p>
+    <strong>第一，同样的问题在门诊被反复回答。</strong>
+    从首页 AI 对话和陪伴群的提问日志看，乳腺与消化道两个方向各有一批高频问题，
+    集中度比预想的高。化疗后手麻、造口周围皮肤发红、升白针骨痛、复查前睡不着——
+    这些问题在不同患者身上几乎以相同措辞重复出现。
+  </p>
+  <p>
+    <strong>第二，患者最急的不是疾病知识，是"我这个症状要不要紧"。</strong>
+    日本癌症信息网站 2,782 条自由文本提问的文本挖掘显示，各癌种共通的高频需求是
+    症状、分期、治疗、治愈概率、恢复、转移和复发。乳腺癌特异的话题是保乳与重建、
+    三阴性、内分泌治疗；消化道肿瘤方向则集中在造口护理、饮食与营养、吻合口问题。
+    而韩国 332 例乳腺癌生存者的研究里，未满足需求最高的一项是"帮助应对复发恐惧"。
+  </p>
+  <p>
+    <strong>第三，做过的科普留不下记录。</strong>
+    目前没有系统帮医生记录"做了什么、在哪发的、多少字、什么时间、是否合规"，
+    到评审季要靠翻手机找。
+  </p>
+
+  <h3>这份方案的范围</h3>
+  <p>
+    围绕上述三点，我们设计了四个模块，全部接在现有医患端已有的结构上，
+    不要求贵院改变现行诊疗流程：<b>选题</b>（从真实提问聚类）、
+    <b>制作</b>（起草与依据绑定）、<b>过审</b>（三道审核与留痕）、
+    <b>送达</b>（按治疗节点推给本人患者）。
+  </p>
+  <p>
+    方案明确不涉及：公域账号代运营、涨粉类选题推荐、任何形式的带货或导流、
+    AI 生成内容未经确认直接发布。这几项既是红线，也不是我们认为有价值的方向。
+  </p>
+</div>
+
+<aside class="ann">
+  <div class="ann-item red">
+    <b>十条负面清单</b>
+    国卫办医政函〔2025〕419号，2025-11-07 印发，制定日期 2025-10-31。
+    依据含《基本医疗卫生与健康促进法》《医师法》《科学技术普及法》。
+  </div>
+  <div class="ann-item">
+    <b>职称口径按省配置</b>
+    山西细化到省级及以上科普大赛三等奖以上；晋升正高在三级医院需
+    市厅级以上科普奖或官方媒体科普作品累计 3 项。
+    产品不写死规则，按贵院所在省份配置。
+  </div>
+  <div class="ann-item">
+    <b>患者信息需求</b>
+    Thai women 初始治疗期横断面研究：总体信息需求 224.7/260.0，
+    集中在躯体照护、治疗与诊断；76.4% 对躯体照护信息需求尤其高。
+  </div>
+  <div class="ann-item">
+    <b>复发恐惧</b>
+    韩国 332 例乳腺癌生存者多中心研究：未满足需求最高域为"信息与教育"，
+    单项最高为"帮助应对复发恐惧"。
+  </div>
+  <div class="ann-item">
+    <b>中国语境缺口</b>
+    中国肿瘤患者未满足信息需求报告率 37%–73%，跨度很大，
+    说明人群与测量工具差异显著。我们未找到针对中国消化道肿瘤患者
+    信息需求的高质量横断面研究，此处是证据空白。
+  </div>
+</aside>
+</div>
+</section>
+
+<!-- ════════ 二、红线 ════════ -->
+<section id="redline">
+<div class="col">
+  <span class="sec-no">02 — 合规边界</span>
+  <h2>十条清单对应的系统拦截</h2>
+  <p class="lede">
+    下表左侧是清单条款，右侧是我们打算在系统里做的拦截动作。
+    这些不是提示文案，是真的会挡住提交的校验。
+    <strong>请重点看右侧是否过严</strong>——过严会让正常内容发不出去，这是我们最担心的。
+  </p>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th style="width:52px">条</th><th style="width:32%">禁止行为（摘要）</th><th>产品必须实现的拦截</th><th style="width:88px">拦截点</th></tr></thead>
+<tbody>
+<tr><td class="no">二</td><td>以健康科普形式违法违规发布广告、导流导诊，或通过直播带货推销医药产品、养生课程、保健食品牟利</td><td>内容编辑器禁止插入商品链接、店铺、价格、联系方式；品牌药名触发强制替换为通用名并弹出复核；直播间关闭一切商品组件</td><td><span class="pill r">硬拦截</span></td></tr>
+<tr><td class="no">三</td><td>泄露患者个人信息，或未经授权展示可识别身份的影像资料</td><td>所有引用病例走"脱敏—患者单独授权—医务复核"三步；影像自动检测可识别要素；未拿到授权的素材无法进入发布队列</td><td><span class="pill r">硬拦截</span></td></tr>
+<tr><td class="no">四</td><td>宣传超出本人执业范围、专业领域的内容</td><td>医生账号绑定执业科室，选题库按科室过滤；跨科选题标黄，需本科室医生联署才能提交审核</td><td><span class="pill a">标黄</span></td></tr>
+<tr><td class="no">五</td><td>低俗、"擦边"、哗众取宠等吸引流量的内容</td><td>标题与封面过敏感词与夸张句式检测；"震惊体""绝对化用语"提示改写</td><td><span class="pill a">标黄</span></td></tr>
+<tr><td class="no">七</td><td>滥用人工智能技术，发布未经核准真实性、科学性，或未添加显著 AI 生成合成标识的内容</td><td>AI 生成的每一段落强制绑定依据来源；未经医生逐段确认不能进入审核；发布物自动打 AI 合成标识，标识不可关闭</td><td><span class="pill r">硬拦截</span></td></tr>
+<tr><td class="no">八</td><td>批量发布无实际科普价值的同质低质内容诱导关注点赞</td><td>相似度检测：同一账号近 90 天内容去重，重复率超阈值拒绝提交；选题必须关联真实患者提问或临床节点</td><td><span class="pill a">标黄</span></td></tr>
+<tr><td class="no">九</td><td>未向所在医疗机构报告，不得以机构名义或个人职务身份开展互联网健康科普</td><td>账号备案字段（机构、科室、报告日期、备案号）为必填；未备案账号无法发布带职务身份的内容</td><td><span class="pill r">硬拦截</span></td></tr>
+<tr><td class="no">十</td><td>离职后继续沿用原单位和职务信息开展科普</td><td>执业状态变更触发全部历史内容的身份信息冻结与下架提醒，并通知医务处</td><td><span class="pill r">硬拦截</span></td></tr>
+<tr><td class="no">—</td><td>平台侧：禁止诊疗过程直播；直播不得问诊、售药、展示手术过程</td><td>直播模块只开放"讲稿播放 + 结构化提问收集"，不开放实时一对一回答；弹幕中的个人病情提问自动转私域工单，不在直播中回答</td><td><span class="pill r">硬拦截</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<p class="fignote" style="max-width:38em">
+  <b>一句话概括：</b>监管收走的是"用医生身份接广告"的权限，不是"用医生身份说话"的权限。
+  整套设计都建在后者上。
+</p>
+
+<h3>我们不做的事</h3>
+<p style="font-size:14px;color:var(--muted);max-width:38em">
+  列在这里是为了让您知道合作边界，避免后续出现预期落差。
+</p>
+</div>
+
+<div class="vs">
+  <div class="vs-c bad">
+    <div class="vs-h">不做</div>
+    <ul>
+      <li><b>代运营公域账号</b>：清单明确禁止与无资质或有不良记录的运营公司合作代运营</li>
+      <li><b>涨粉 KPI</b>：不把播放量、粉丝数作为主指标，不做"蹭热点"的选题推荐</li>
+      <li><b>纯 AI 生成直接发布</b>：AI 可以起草，但没有逐段确认不能进审核队列</li>
+      <li><b>科普内引流到问诊</b>：内容页不放挂号、问诊、购药入口</li>
+      <li><b>病例故事营销</b>：不做"患者康复故事"强化信任再转化的链路</li>
+    </ul>
+  </div>
+  <div class="vs-c good">
+    <div class="vs-h">做</div>
+    <ul>
+      <li><b>院内选题池</b>：选题来自医患端里真实的患者提问聚类，有据可查</li>
+      <li><b>三道审核流转</b>：运营初审（禁词）→ 医务复审（专业范围与科学性）→ 合规终审（广告法），每道留痕</li>
+      <li><b>定向送达</b>：内容优先推给您绑定的、处在对应治疗节点的患者</li>
+      <li><b>业绩档案</b>：按所在省职称口径自动归集作品、场次、字数、平台、时间</li>
+      <li><b>公益直播</b>：免费公益健康科普与学术交流不受带货限制，这是直播的合法形态</li>
+    </ul>
+  </div>
+</div>
+
+<div class="col">
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>右侧的拦截规则里，哪几条在实际写稿时会过于碍事？特别是"绝对化用语"检测——
+      临床上有些表述确实是有共识的，被一律标红会很烦。</li>
+    <li>贵院现行的科普审核流程是几道？由哪个部门牵头？我们的三道设计是否与之冲突。</li>
+  </ul>
+</div>
+</div>
+</section>
+
+<!-- ════════ 三、场景与界面 ════════ -->
+<section id="scene">
+<div class="col">
+  <span class="sec-no">03 — 工作流</span>
+  <h2>四个模块，接在现有医患端的四个位置上</h2>
+  <p class="lede">
+    现有医患端已经有：围手术期与化疗期陪伴、首页 AI 对话、陪伴群、
+    专属知识库、相似案例、风险工作台、AI 回答抽检。
+    科普模块不另起炉灶，从这些已有结构里长出来。
+  </p>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th style="width:110px">模块</th><th style="width:26%">接在现有的哪里</th><th>做什么</th><th style="width:94px">新建/复用</th></tr></thead>
+<tbody>
+<tr><td><b>选题</b></td><td>首页 AI 对话的提问日志、陪伴群聊天、风险工作台</td><td>把患者真实问过的问题聚类成选题，带频次和治疗节点</td><td><span class="pill g">复用数据</span></td></tr>
+<tr><td><b>制作</b></td><td>专属知识库、相似案例库</td><td>起草口播稿与分镜，每段绑定知识库来源，需逐段确认</td><td><span class="pill a">新建</span></td></tr>
+<tr><td><b>过审</b></td><td>AI 回答抽检模块的审核链路</td><td>三道审核、禁词检测、留痕可举证</td><td><span class="pill g">扩展复用</span></td></tr>
+<tr><td><b>送达</b></td><td>任务日历、陪伴群、治疗节点引擎</td><td>按患者所处节点定向推送，回收提问形成下一轮选题</td><td><span class="pill g">复用引擎</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<p>
+  第四项形成闭环：患者化疗后问"手麻要不要紧"，这条提问进入选题池；
+  您讲了一条《化疗后手脚麻木怎么办》；这条内容自动推给所有处在同类节点的患者；
+  他们看完之后又产生新的提问。<strong>选题的来源和内容的去处是同一批人。</strong>
+</p>
+
+<h3>两个专科的差异</h3>
+<p>
+  同一套工作流，但选题结构、节点定义和高频问题差别较大。
+  下面是我们目前的理解，<b>可能有偏差，请指正</b>。
+</p>
+</div>
+
+<div class="spec">
+  <div class="spec-c">
+    <div class="spec-h">乳腺肿瘤</div>
+    <ul>
+      <li><b>节点密集期</b>：围手术期、化疗周期 D 日、放疗期、内分泌治疗长期随访</li>
+      <li><b>高频问题</b>：化疗副作用（手麻、脱发、口腔溃疡、升白针骨痛）、
+        保乳与重建、内分泌治疗依从性与副作用、淋巴水肿</li>
+      <li><b>年轻患者特有</b>：生育力保存、妊娠计划、遗传风险与家属级联检测</li>
+      <li><b>长尾需求</b>：复发恐惧、身体形象、性健康、工作回归——
+        反复出现且集中在复查前，单条内容解决不了</li>
+      <li><b>内容周期</b>：治疗期密集，生存期长，内容需覆盖长程</li>
+    </ul>
+  </div>
+  <div class="spec-c">
+    <div class="spec-h">消化道肿瘤</div>
+    <ul>
+      <li><b>节点密集期</b>：术前准备与肠道准备、围手术期、吻合口愈合期、
+        化疗周期、造口适应期</li>
+      <li><b>高频问题</b>：造口护理与周围皮肤问题、饮食与营养（术后进食顺序、
+        什么时候能吃什么）、排便习惯改变、吻合口漏的警示信号</li>
+      <li><b>操作性更强</b>：造口更换、伤口观察、营养配比这类内容
+        <b>演示价值高于讲解</b>，更适合分步骤视频而非口播</li>
+      <li><b>照护者参与度高</b>：家属常是实际执行人，内容需同时面向患者与照护者</li>
+      <li><b>紧急识别重要</b>：吻合口漏、肠梗阻、造口缺血等，
+        需要患者或家属能自己识别并及时就医</li>
+    </ul>
+  </div>
+</div>
+
+<div class="col">
+<p>
+  这个差异对设计有两个直接影响：<b>一是内容形态</b>——消化道方向需要更多
+  分步骤演示类内容，制作台要支持分镜而不只是口播稿；
+  <b>二是送达对象</b>——造口护理类内容需要能同时推给家属账号，
+  这在现有医患端里还没有对应结构。
+</p>
+
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>上面两栏的高频问题，和您门诊里实际被问得最多的是否一致？有没有漏掉的大类？</li>
+    <li>消化道方向，分步骤演示类内容（造口更换、伤口观察）由谁出镜更合适——
+      医生、专科护士，还是造口治疗师？这会影响账号与审核设计。</li>
+    <li>家属账号这件事，贵院现在怎么处理？是否存在患者本人不使用智能手机的情况。</li>
+  </ul>
+</div>
+</div>
+
+<!-- ───── 界面图 1：选题官 ───── -->
+<div class="figwrap">
+<div class="figcap">
+  <span class="figcap-n">图 01</span>
+  <span class="figcap-t">医生端 · 科普选题官</span>
+  <span class="figcap-d">选题来自真实提问聚类，不是热点榜</span>
+</div>
+
+<div class="screen">
+<div class="ui">
+  <div class="ui-top">
+    <div class="ui-mark">橙</div>
+    <div class="ui-brand">橙心健康</div>
+    <div class="ui-sep"></div>
+    <div class="ui-sub">科普工作台</div>
+    <div class="ui-tabs">
+      <div class="ui-tab on">选题</div>
+      <div class="ui-tab">制作</div>
+      <div class="ui-tab">审核</div>
+      <div class="ui-tab">送达</div>
+      <div class="ui-tab">我的业绩</div>
     </div>
-  </header>
+    <div class="ui-right">
+      <span class="tg gray">已备案 · 乳腺外科</span>
+      <div class="ui-avatar">卢</div>
+    </div>
+  </div>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Product research / 2026.11.24</div>
-          <h1>把科普做成<br><em>可互动的医患关系。</em></h1>
-          <p class="hero-lede">KePu 是一套面向医生团队的医疗科普生产与互动服务平台：将专业知识转化为可拍、可审、可互动、可持续运营的内容，让患者理解与问题回到医生工作台。</p>
-          <div class="hero-note"><span class="chip"><strong>医生可控</strong> 内容审核 + 专业表达</span><span class="chip"><strong>患者可学</strong> C 端互动 + 任务反馈</span><span class="chip"><strong>服务可延展</strong> 直播 + 随访闭环</span></div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <div class="ui-sgroup">选题来源</div>
+      <div class="ui-snav on"><span class="ui-dot"></span>患者提问聚类<span class="ui-badge hot">12</span></div>
+      <div class="ui-snav"><span class="ui-dot"></span>陪伴群高频词<span class="ui-badge">7</span></div>
+      <div class="ui-snav"><span class="ui-dot"></span>风险工作台转化<span class="ui-badge">3</span></div>
+      <div class="ui-snav"><span class="ui-dot"></span>科室指定任务<span class="ui-badge">2</span></div>
+      <div class="ui-sgroup">我的队列</div>
+      <div class="ui-snav"><span class="ui-dot"></span>草稿箱</div>
+      <div class="ui-snav"><span class="ui-dot"></span>审核中<span class="ui-badge">1</span></div>
+      <div class="ui-snav"><span class="ui-dot"></span>已发布</div>
+    </div>
+
+    <div class="ui-main">
+      <div class="ui-h"><h5>患者提问聚类</h5><span class="tg t">近 30 天 · 本人绑定患者 86 人</span></div>
+      <div class="ui-hsub">来自首页 AI 对话与陪伴群，已脱敏。频次高且尚无对应科普内容的排在前面。</div>
+
+      <div class="ui-tagrow">
+        <span class="ui-chip on">待认领 12</span>
+        <span class="ui-chip">化疗期</span>
+        <span class="ui-chip">围手术期</span>
+        <span class="ui-chip">内分泌治疗</span>
+        <span class="ui-chip">生育与遗传</span>
+        <span class="ui-chip">已有内容 24</span>
+      </div>
+
+      <div class="ui-card flag">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">化疗后手脚麻木，要不要紧、会不会好</div>
+            <div class="ui-cm">31 人问过 · 集中在 AC-T 序贯 T 阶段第 2 周期后 · 本院尚无对应内容</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn p">认领选题</button></div>
         </div>
-        <div class="hero-board" aria-label="产品闭环示意">
-          <div class="board-top"><span><i class="live-dot"></i>KEPU / LOOP 01</span><span>doctor × patient</span></div>
-          <div class="board-body"><h2>一条内容，四种结果</h2><p>看懂 · 记住 · 会做 · 有疑问时找到对的人</p><div class="orbit"><div class="orbit-core">医生<br>可信度</div></div></div>
-          <div class="board-flow"><span><b>01</b>内容生成</span><span><b>02</b>互动学习</span><span><b>03</b>问题回流</span><span><b>04</b>医生跟进</span></div>
+        <div class="ui-quote">
+          <b>患者原话（脱敏抽样）</b>：「手指尖这两天一直麻，扣扣子都费劲，是不是药的问题，要不要停」
+          <div class="ui-src"><span class="tg gray">来源 · 首页AI对话</span><span class="tg gray">节点 · T方案 D14</span><span class="tg b">已有院内知识库条目 2 条可引用</span></div>
         </div>
       </div>
-    </section>
 
-    <section id="thesis">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">01 · Product thesis</div><h2>把医生的专业影响力，做成可持续的患者教育服务。</h2></div><p>从现有内容与拍摄能力出发，将一次专业表达延展为短视频、互动任务、直播答疑和患者回访，形成可持续运营的服务链路。</p></div>
-        <div class="thesis">
-          <article class="thesis-card"><h3>核心判断</h3><p class="big-claim">最值得验证的单位是 <span class="claim-underline">一次被医生认可、被患者完成并产生后续服务动作的健康教育体验</span>。</p><div class="mini-list"><div><i>✓</i><span>AI 为医生整理选题、脚本和问题，医生保留专业表达与发布决策。</span></div><div><i>✓</i><span>患者通过小测、情景选择和任务反馈，完成从观看到理解的转化。</span></div><div><i>✓</i><span>患者问题被结构化进入医生工作台，支持答复、直播和持续教育。</span></div></div></article>
-          <article class="thesis-card dark"><h3>对现有 C 端产品的借力方式</h3><p>把一次拍摄转化为可持续运营的内容单元：长视频 → 短视频 → 互动卡 → 直播提问 → 回放章节 → 患者随访。</p><div class="mini-list"><div><i>↗</i><span>内容资产：脚本、画面、字幕、证据、问题、版本统一管理。</span></div><div><i>↗</i><span>医生资产：专科标签、专业表达与可复用答复库持续沉淀。</span></div><div><i>↗</i><span>患者资产：学习进度、理解盲点、提问和后续服务意向形成连续记录。</span></div></div></article>
+      <div class="ui-card flag">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">内分泌治疗期间还能不能怀孕</div>
+            <div class="ui-cm">18 人问过 · 诊断年龄 &lt;40 岁组占 17 人 · 涉及共同决策，建议联合生殖科</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn">认领</button></div>
+        </div>
+        <div class="ui-quote">
+          <span class="tg y">跨科提示</span> 本选题涉及生殖医学，按负面清单第四条需本科室外联署。
+          <div class="ui-src"><span class="tg gray">建议联署 · 生殖医学中心</span><span class="tg b">可引用 POSITIVE 研究结论（需标注适用范围）</span></div>
         </div>
       </div>
-    </section>
 
-    <section id="roles" style="background:#e9f1eb">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">02 · Jobs to be done</div><h2>围绕医生工作流，重新安排三端协作。</h2></div><p>医生、患者与内容团队共享同一套内容对象；每个角色都获得与自己工作目标相匹配的工具和反馈。</p></div>
-        <div class="role-tabs" role="tablist" aria-label="角色场景"><button class="role-tab" role="tab" aria-selected="true" data-role="doctor">医生端</button><button class="role-tab" role="tab" aria-selected="false" data-role="patient">患者端</button><button class="role-tab" role="tab" aria-selected="false" data-role="ops">内容/运营端</button></div>
-        <div class="role-panel active" data-panel="doctor"><article class="role-main"><h3>医生：把一次专业表达，变成一组可信资产。</h3><p>医生端的核心价值是把专业判断保留在关键节点，把选题整理、脚本编排、患者互动和问题归档交给 AI 协同完成。</p><div class="step-list"><div class="step"><span class="step-no">01 / 说清</span><strong>选题简报</strong><span>输入疾病、患者误区、目标人群与沟通重点。</span></div><div class="step"><span class="step-no">02 / 拍好</span><strong>脚本 + 镜头</strong><span>生成口播、B-roll、字幕、停顿和互动节点。</span></div><div class="step"><span class="step-no">03 / 审核</span><strong>内容审校</strong><span>来源、更新时间、重点结论和需确认项一处呈现。</span></div></div></article><aside class="role-side"><h4>医生真正会看的指标</h4><div class="metric-row"><span>首轮采纳率</span><strong>少返工</strong></div><div class="metric-row"><span>审核完成效率</span><strong>更聚焦</strong></div><div class="metric-row"><span>同一主题复用率</span><strong>可积累</strong></div><div class="risk">医生工作台定位：专业表达由医生确认，AI 负责内容编辑、互动编排和问题分流。</div></aside></div>
-        <div class="role-panel" data-panel="patient"><article class="role-main"><h3>患者：把“看过”变成“我知道下一步怎么做”。</h3><p>患者需要适配当前处境的短内容、可验证的理解和清晰的服务入口，知道何时复习、何时提问、何时联系医生。</p><div class="step-list"><div class="step"><span class="step-no">01 / 找到</span><strong>场景入口</strong><span>按疾病阶段、检查前后、用药或家属角色进入。</span></div><div class="step"><span class="step-no">02 / 互动</span><strong>小测 + 分支</strong><span>识别理解盲点，给出面向行动的解释与下一步。</span></div><div class="step"><span class="step-no">03 / 连接</span><strong>问题回流</strong><span>收藏、追问、预约直播或进入医生服务队列。</span></div></div></article><aside class="role-side"><h4>患者得到的价值</h4><div class="metric-row"><span>短内容完成率</span><strong>少焦虑</strong></div><div class="metric-row"><span>理解小测正确率</span><strong>会行动</strong></div><div class="metric-row"><span>服务连接率</span><strong>更及时</strong></div><div class="risk">游戏化围绕学习进度与理解反馈展开；患者的个体化问题进入医生服务队列，形成连续照护体验。</div></aside></div>
-        <div class="role-panel" data-panel="ops"><article class="role-main"><h3>内容/运营：把一场拍摄，运营成可测量的服务。</h3><p>运营侧需要主题排期、版本管理、直播编排和复盘看板，让每个素材、患者问题和直播结果都有来源与去向。</p><div class="step-list"><div class="step"><span class="step-no">01 / 规划</span><strong>主题地图</strong><span>按患者旅程拆解误区、关键行动和内容空白。</span></div><div class="step"><span class="step-no">02 / 编排</span><strong>资产流水线</strong><span>同一专业内容自动衍生视频、图文、问答与直播卡。</span></div><div class="step"><span class="step-no">03 / 复盘</span><strong>闭环看板</strong><span>查看理解结果、患者问题和医生响应效率。</span></div></div></article><aside class="role-side"><h4>运营真正会看的指标</h4><div class="metric-row"><span>主题到发布时间</span><strong>更快</strong></div><div class="metric-row"><span>内容资产复用率</span><strong>更省</strong></div><div class="metric-row"><span>直播问题解决率</span><strong>更深</strong></div><div class="risk">先将拍摄、审核和发布沉淀为可追踪的内容对象，再叠加模型能力，让每一轮投入都能形成可复用资产。</div></aside></div>
-        <div class="specialty-spotlight" id="specialties"><div class="spotlight-head"><div><div class="eyebrow" style="color:var(--lime)">Specialty pilots · 专病试点</div><h3>从乳腺癌与消化道肿瘤的高频沟通开始。</h3></div><p>先把医生每天反复解释的内容做成短课、互动题和直播主题，再观察患者理解、问题质量与复诊准备效率。</p></div><div class="specialty-tabs" role="tablist" aria-label="专病试点"><button class="specialty-tab" role="tab" aria-selected="true" data-specialty="breast">乳腺癌</button><button class="specialty-tab" role="tab" aria-selected="false" data-specialty="gi">消化道肿瘤</button></div><div class="specialty-panel active" data-specialty-panel="breast"><article class="specialty-main"><h4>乳腺癌：围绕病理沟通、治疗记录和复诊准备组织内容。</h4><p>把一份专业解释拆成患者能完成的学习路径：先理解报告，再记录治疗期间的变化，最后带着高质量问题进入复诊。</p><div class="path-grid"><div class="path-card"><small>01 / 初次沟通</small><strong>病理报告怎么读</strong><span>围绕 ER、PR、HER2、Ki-67 等报告字段设计“术语—问题—复诊准备”短课。</span></div><div class="path-card"><small>02 / 治疗期间</small><strong>症状记录与反馈</strong><span>用日期、症状变化和对生活的影响形成复诊前摘要，帮助医生快速了解患者状态。</span></div><div class="path-card"><small>03 / 复诊前</small><strong>把问题带给医生</strong><span>通过问题卡和直播预收集，整理患者最关心的治疗、复查与生活管理话题。</span></div></div></article><aside class="specialty-side"><h4>可直接拍摄的选题</h4><div class="topic-list"><span>一张病理报告的 3 分钟拆解</span><span>复诊前应该准备哪些问题</span><span>治疗期间怎样记录变化</span><span>乳腺癌患者常见误区</span></div><div class="pilot-callout"><strong>互动题示例：</strong>“看到病理报告中的多个指标后，哪些信息适合在复诊时向医生确认？”答题结果自动生成患者提问清单。</div></aside></div><div class="specialty-panel" data-specialty-panel="gi"><article class="specialty-main"><h4>消化道肿瘤：围绕检查准备、病理术语和治疗期观察组织内容。</h4><p>将胃癌、结直肠癌等患者常见的检查与复诊问题拆成任务卡，让患者在关键节点完成准备、记录和提问。</p><div class="path-grid"><div class="path-card"><small>01 / 检查前</small><strong>胃肠镜准备清单</strong><span>把机构交代的饮食、用药和检查流程转成可勾选任务，减少患者遗漏。</span></div><div class="path-card"><small>02 / 报告后</small><strong>病理术语怎么理解</strong><span>围绕部位、类型、分化等报告信息设计术语卡，并链接复诊时的重点问题。</span></div><div class="path-card"><small>03 / 治疗期间</small><strong>进食与排便记录</strong><span>用日期、症状变化和生活影响形成连续记录，支持医生在复诊时快速判断沟通重点。</span></div></div></article><aside class="specialty-side"><h4>可直接拍摄的选题</h4><div class="topic-list"><span>胃肠镜检查前怎么准备</span><span>胃癌病理报告重点看什么</span><span>结直肠肿瘤复诊前问题清单</span><span>治疗期间如何记录变化</span></div><div class="pilot-callout"><strong>互动题示例：</strong>“哪种记录方式更方便医生了解一周变化？”患者完成选择后生成复诊摘要，并提示可在直播中继续提问。</div></aside></div></div>
+      <div class="ui-card">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">复查前睡不着，总觉得会复发</div>
+            <div class="ui-cm">26 人问过 · 跨治疗阶段 · 建议做成系列而非单条</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn">认领</button></div>
+        </div>
       </div>
-    </section>
 
-    <section>
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">03 · Loop design</div><h2>闭环的最小单元：一条内容，五个节点。</h2></div><p>患者完成互动后，理解结果、问题和服务需求回到医生工作台，形成下一次内容与服务。</p></div>
-        <div class="loop"><div class="loop-node"><div class="loop-icon">▱</div><strong>内容</strong><span>医生审核的解释、视频、图文</span></div><div class="loop-node"><div class="loop-icon">?</div><strong>互动</strong><span>小测、分支、错题解释</span></div><div class="loop-node"><div class="loop-icon">↗</div><strong>行动</strong><span>收藏、提醒、任务、预约</span></div><div class="loop-node"><div class="loop-icon">☏</div><strong>回流</strong><span>问题、风险信号、服务意向</span></div><div class="loop-node"><div class="loop-icon">✓</div><strong>跟进</strong><span>医生答复、直播、真人升级</span></div></div>
+      <div class="ui-card pass">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">升白针打完骨头痛正常吗</div>
+            <div class="ui-cm">已有内容《升白针后的骨痛》· 本月触达 54 人 · 观看完成率 71%</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn q">查看数据</button></div>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
+</div>
 
-    <section id="agents" style="background:#fffdf8">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">04 · Agent architecture</div><h2>三个 Agent，协同医生团队的三类工作。</h2></div><p>按内容、互动和直播拆分，医生在关键节点确认专业表达，AI 负责把工作流串起来。</p></div>
-        <div class="agent-grid"><article class="agent-card"><div class="agent-code">AGENT 01 / AUTHOR</div><h3>科普编导 Agent</h3><p>把医生的知识、已有视频和选题意图，整理成可拍、可审、可复用的内容包。</p><ul><li>选题 brief 与人群/场景拆解</li><li>脚本、镜头、字幕、标题多版本</li><li>证据卡、重点句、引用与版本</li><li>从长视频切片到互动节点建议</li></ul><div class="tagline">输出：医生审核后的内容包</div><a href="#guardrail">看审核工作流 →</a></article><article class="agent-card"><div class="agent-code">AGENT 02 / COACH</div><h3>患者陪学 Agent</h3><p>围绕一条科普内容，生成理解确认、任务和个性化复习，帮助患者完成一次有效学习。</p><ul><li>视频中插入小测、拖拽、判断、分支</li><li>根据错题解释“为什么”，强化理解</li><li>学习进度、收藏、问题和提醒</li><li>个体化问题自动进入医生服务队列</li></ul><div class="tagline">输出：患者理解与行动记录</div><a href="#demo">看互动样例 →</a></article><article class="agent-card"><div class="agent-code">AGENT 03 / HOST</div><h3>直播共创 Agent</h3><p>帮助医生把直播做成一次高密度的公共答疑，并把问题沉淀为下一轮科普内容。</p><ul><li>直播前收集与聚类问题、生成流程单</li><li>实时字幕、章节、投票和问题队列</li><li>回答候选、来源提示、分流建议</li><li>回放自动分段，生成后续科普任务</li></ul><div class="tagline">输出：主持辅助与医生可接管的问题队列</div><a href="#live">看直播工作台 →</a></article></div>
-      </div>
-    </section>
+<p class="fignote">
+  <b>与公域工具最大的差别在左侧栏。</b>选题来源是"患者提问聚类 / 陪伴群高频词 /
+  风险工作台转化"，不是热榜或爆款拆解。这既绕开了清单第八条的"批量同质低质内容"，
+  也让每条选题带着可追溯的需求证据。
+  第二张卡的跨科提示对应清单第四条：涉及本专业之外的内容，需要相应科室联署。
+</p>
+</div>
 
-    <section id="demo">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">05 · Patient experience</div><h2>把健康教育做成患者愿意完成的学习体验。</h2></div><p>示例：患者看完“检查前准备”短视频后，用 30 秒完成一个理解确认；每次选择都带来一条针对性解释和下一步提示。</p></div>
-        <div class="demo-wrap"><div class="phone"><div class="phone-top">KePu · 患者陪学</div><div class="phone-body"><div class="phone-kicker">检查前准备 · 第 2/4 关</div><h3>先做哪一件事？</h3><div class="progress"><i></i></div><div class="quiz-card"><small>看完视频后的理解确认</small><p>如果医生要求检查前保持空腹，下面哪项最稳妥？</p><div class="quiz-options"><button class="quiz-option" data-answer="wrong">A · 只要不吃固体食物就可以</button><button class="quiz-option" data-answer="correct">B · 按医生/机构给出的具体要求执行</button><button class="quiz-option" data-answer="wrong">C · 先按网上经验自行调整</button></div><div class="quiz-feedback" id="quiz-feedback">答对了。不同检查的要求可能不同，优先依据本次检查的医嘱和机构说明；有疑问时直接联系医护人员。</div></div><button class="button" style="width:100%;margin-top:18px" id="next-quiz">继续下一关 →</button></div></div><div class="demo-copy"><h3>把互动设计成服务入口。</h3><p>患者每次选择都能解释一个误区、补一条上下文，或触发下一步服务，让学习结果与医生服务自然连接。</p><div class="demo-line"><b>轻量游戏</b><span>小测、错题复习、情景选择、进度徽章、连续学习。</span></div><div class="demo-line"><b>个性化</b><span>按疾病阶段、检查/用药节点、家属角色推荐内容，形成专属学习路径。</span></div><div class="demo-line"><b>互动闭环</b><span>收藏 → 提问 → 医生审核 → 直播/答复 → 生成后续学习任务。</span></div><div class="demo-callout"><strong>关键体验指标</strong>理解题正确率提升、服务连接率、医生重复解释减少量，以及患者问题的响应效率。</div></div></div>
-      </div>
-    </section>
+<!-- ───── 界面图 1b：消化道 ───── -->
+<div class="figwrap">
+<div class="figcap">
+  <span class="figcap-n">图 02</span>
+  <span class="figcap-t">同一界面 · 消化道肿瘤方向</span>
+  <span class="figcap-d">选题结构与内容形态都不同</span>
+</div>
 
-    <section id="live" style="background:#e9f1eb">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">06 · Live clinic</div><h2>直播是一场有准备的共同健康课堂。</h2></div><p>直播前收集问题，直播中帮助医生筛选与解释，直播后把高频问题变成下一轮内容与患者复习任务。</p></div>
-        <div class="live-panel"><div class="live-main"><div class="live-scene"><div class="live-badge">● LIVE 12:38</div><div class="doctor-avatar" aria-hidden="true"></div><div class="live-caption"><small>本场主题</small><strong>检查报告怎么看？</strong></div></div><div class="live-controls"><span>在线 <b>2,486</b> · 互动 <b>438</b> · 已回答 <b>16</b></span><span>章节 03 / 05</span></div></div><div class="live-side"><article class="live-card"><h4>AI 问题队列 · 待医生确认</h4><div class="queue"><div class="question"><em>高频 38×</em> “报告里这个箭头代表什么？”</div><div class="question"><em>需升级</em> “我这种情况需要马上去急诊吗？”</div><div class="question"><em>适合科普</em> “不同检查的参考值为什么不一样？”</div></div><a class="button" href="#guardrail">查看分流规则</a></article><article class="live-card"><h4>直播后自动生成</h4><p id="replay-copy" aria-live="polite">章节回放 · 3 条短视频 · 5 张问答卡 · 1 份医生审核清单 · 1 个患者复习任务</p><button class="button secondary" style="margin-top:15px" id="generate-replay" type="button">模拟生成回放 →</button></article></div></div>
-      </div>
-    </section>
+<div class="screen">
+<div class="ui">
+  <div class="ui-top">
+    <div class="ui-mark">橙</div>
+    <div class="ui-brand">橙心健康</div>
+    <div class="ui-sep"></div>
+    <div class="ui-sub">科普工作台</div>
+    <div class="ui-tabs">
+      <div class="ui-tab on">选题</div>
+      <div class="ui-tab">制作</div>
+      <div class="ui-tab">审核</div>
+      <div class="ui-tab">送达</div>
+      <div class="ui-tab">我的业绩</div>
+    </div>
+    <div class="ui-right">
+      <span class="tg gray">已备案 · 胃肠外科</span>
+      <div class="ui-avatar">周</div>
+    </div>
+  </div>
 
-    <section id="open-source">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">07 · Open-source scan</div><h2>把开源能力放在合适的产品层。</h2></div><p>截至 2026-11-24 的 GitHub 公开信息。以下方案分别对应互动内容、实时直播和医疗数据底座，适合作为产品化选型的起点。</p></div>
-        <div class="compare"><table><thead><tr><th>候选</th><th>公开信号</th><th>技术/部署</th><th>适合复用</th><th>产品化工作 / 落地关注</th></tr></thead><tbody><tr><td><strong>H5P Core</strong><br><a class="repo-link" href="https://github.com/h5p/h5p-php-library" target="_blank" rel="noreferrer">github.com/h5p/h5p-php-library ↗</a></td><td><span class="score">156 ★</span><br>2026-11-17 更新<br>GPL-3.0 · PHP</td><td>互动内容核心库；宿主需实现接口并接入内容类型与打包流程。<span class="score mid">中</span></td><td>Interactive Video、Branching Scenario、Quiz、Game Map 等健康教育交互范式；可作为患者“看中学”引擎参考。</td><td>补齐宿主平台、医疗题库、证据引用、患者身份、进度回流和医生审核；GPL-3.0 的分发方式交由法务确认。</td></tr><tr><td><strong>LiveKit</strong><br><a class="repo-link" href="https://github.com/livekit/livekit" target="_blank" rel="noreferrer">github.com/livekit/livekit ↗</a></td><td><span class="score">22,361 ★</span><br>2026-11-24 更新<br>Apache-2.0 · Go</td><td>WebRTC SFU、房间、鉴权、数据通道、录制/导入导出；生产需要域名、SSL、TURN、负载均衡与带宽。<span class="score mid">中高</span></td><td>医生/患者实时音视频、AI 参与者、投票/字幕/事件通道和直播房间底座。</td><td>补齐问题分流、医生工作台、内容审核、病例脱敏、隐私留存、回放内容化与审计记录；传输安全与数据全流程治理一体设计。</td></tr><tr><td><strong>Medplum</strong><br><a class="repo-link" href="https://github.com/medplum/medplum" target="_blank" rel="noreferrer">github.com/medplum/medplum ↗</a></td><td><span class="score">2,815 ★</span><br>2026-11-23 更新<br>Apache-2.0 · TypeScript/React</td><td>FHIR、身份、权限、Bot、PostgreSQL/Redis；工程与数据治理要求高。<span class="score low">高</span></td><td>患者/医生身份、权限审计、结构化健康对象、服务端 Bot 和 FHIR 互操作的建模参考。</td><td>围绕中国医院接口、数据驻留、告知同意、内容安全和业务流程完成本地化设计；将科普体验建立在医疗数据底座之上。</td></tr></tbody></table></div>
-        <p class="source-note">依据：各仓库 GitHub API 的 Star、更新时间、许可证字段，以及仓库 README 的能力与技术说明。<a href="https://github.com/owncast/owncast" target="_blank" rel="noreferrer">Owncast</a>（11,696 ★、MIT）可作为更轻量的自托管直播/聊天备选；三者的定位分别是组件、实时底座和医疗数据底座，最终产品价值来自医生工作流与患者服务设计。</p>
-      </div>
-    </section>
+  <div class="ui-body">
+    <div class="ui-side">
+      <div class="ui-sgroup">选题来源</div>
+      <div class="ui-snav on"><span class="ui-dot"></span>患者提问聚类<span class="ui-badge hot">15</span></div>
+      <div class="ui-snav"><span class="ui-dot"></span>家属提问<span class="ui-badge hot">9</span></div>
+      <div class="ui-snav"><span class="ui-dot"></span>造口门诊记录<span class="ui-badge">6</span></div>
+      <div class="ui-snav"><span class="ui-dot"></span>风险工作台转化<span class="ui-badge">4</span></div>
+      <div class="ui-sgroup">我的队列</div>
+      <div class="ui-snav"><span class="ui-dot"></span>草稿箱<span class="ui-badge">2</span></div>
+      <div class="ui-snav"><span class="ui-dot"></span>审核中</div>
+      <div class="ui-snav"><span class="ui-dot"></span>已发布</div>
+    </div>
 
-    <section id="roadmap" style="background:#fffdf8">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">08 · Build order</div><h2>用 3 个专病或检查试点验证服务价值。</h2></div><p>从医生审核、患者理解和问题回流三个节点开始，逐步扩展直播、院内接口和规模化运营。</p></div>
-        <div class="roadmap"><article class="roadmap-card"><div class="phase-tabs" role="tablist" aria-label="建设阶段"><button class="phase-tab" aria-selected="true" data-phase="p0">P0 · 4 周</button><button class="phase-tab" aria-selected="false" data-phase="p1">P1 · 8–10 周</button><button class="phase-tab" aria-selected="false" data-phase="p2">P2 · 后续</button></div><div class="phase-panel active" data-phase-panel="p0"><h3>验证乳腺癌与消化道肿瘤的内容闭环</h3><p>各选一个高频沟通场景，用已有内容与拍摄能力完成从科普到复诊准备的最小闭环。</p><div class="phase-list"><div class="phase-item"><b>内容</b><span>乳腺癌病理报告沟通、治疗期记录；消化道肿瘤检查准备、病理术语和复诊问题。</span></div><div class="phase-item"><b>患者</b><span>互动视频 + 5 道理解题 + 收藏/提问 + 医生审核队列 + 复诊前摘要。</span></div><div class="phase-item"><b>验证</b><span>10 位医生/100 位患者；关注首轮采纳率、完成率、问题质量和复诊准备效率。</span></div></div></div><div class="phase-panel" data-phase-panel="p1"><h3>把一次内容变成一条内容流水线</h3><p>把互动单元、患者进度和直播前后流程接到同一个内容对象上。</p><div class="phase-list"><div class="phase-item"><b>产品</b><span>疾病/阶段内容地图、错题复习、问题聚类、直播流程单和回放生成。</span></div><div class="phase-item"><b>系统</b><span>医生工作台、内容版本、来源与审核记录、消息与权限。</span></div><div class="phase-item"><b>验证</b><span>看复用率、医生响应 SLA、患者复访、直播问题沉淀率。</span></div></div></div><div class="phase-panel" data-phase-panel="p2"><h3>扩展医疗数据和规模化直播</h3><p>在内容服务闭环稳定后，进入院内接口、机构权限和多医生直播的产品化阶段。</p><div class="phase-list"><div class="phase-item"><b>平台</b><span>对接患者门户、院内系统、标准化健康对象与机构级权限。</span></div><div class="phase-item"><b>直播</b><span>多医生、多专病、峰值弹性、内容审核、回放和多渠道分发。</span></div><div class="phase-item"><b>协作</b><span>将临床决策相关需求单独立项，配置外部验证、审计和责任主体。</span></div></div></div></article><article class="roadmap-card"><h3 style="margin:0 0 12px;font-size:24px;letter-spacing:-.04em">下一阶段重点关注</h3><div class="no-list"><div class="no-item"><strong>聚焦医生审核的科普场景</strong>先围绕专病教育、检查准备和术后管理建立高频使用路径，再扩展服务范围。</div><div class="no-item"><strong>以理解和行动衡量效果</strong>关注理解率、服务连接率和医生重复解释减少量，形成可复盘的业务指标。</div><div class="no-item"><strong>建立患者数据协作机制</strong>围绕脱敏、权限、告知同意和医生确认设计直播与互动流程。</div><div class="no-item"><strong>采用学习成就机制</strong>用进度、徽章和复习任务鼓励持续学习，服务患者的专属学习路径。</div></div></article></div>
-      </div>
-    </section>
+    <div class="ui-main">
+      <div class="ui-h"><h5>患者提问聚类</h5><span class="tg t">近 30 天 · 本人绑定患者 104 人</span></div>
+      <div class="ui-hsub">含家属账号提问 38 条。操作类问题已标注建议采用分步骤演示形态。</div>
 
-    <section>
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">09 · Success metrics</div><h2>用“理解和闭环”替代“流量和热闹”。</h2></div><p>指标要能帮助产品做取舍，也要能暴露安全问题。任何单一指标都不应单独成为上线依据。</p></div>
-        <div class="metrics"><div class="metric"><b>≤ 1 天</b><span>选题到首版内容包</span><small>效率 · 医生/运营</small></div><div class="metric"><b>↑ 理解率</b><span>互动前后小测提升</span><small>效果 · 患者</small></div><div class="metric"><b>100%</b><span>个体化问题进入人工队列</span><small>服务 · 医生</small></div><div class="metric"><b>≥ 3×</b><span>一次拍摄的资产复用</span><small>商业 · 内容</small></div></div>
+      <div class="ui-tagrow">
+        <span class="ui-chip on">待认领 15</span>
+        <span class="ui-chip">造口护理</span>
+        <span class="ui-chip">饮食营养</span>
+        <span class="ui-chip">术后恢复</span>
+        <span class="ui-chip">化疗期</span>
+        <span class="ui-chip">警示信号</span>
       </div>
-    </section>
 
-    <section id="guardrail" style="background:#f0ece3">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">10 · Clinical collaboration</div><h2>把医生审核与服务分流嵌入产品流程。</h2></div><p>通过清晰的内容分级、问题分流和审核记录，让医生始终掌握专业表达、患者连接与服务升级的关键节点。</p></div>
-        <div class="guardrail"><article class="guard-card alert"><h3>四级服务分流</h3><p>Agent 先判断问题类型，再将内容引导至知识学习、行动指导、医生审核或紧急服务入口。</p><div class="guard-list"><div><b>G0 / 知识</b><span>定义、原理、检查流程、术语解释，展示来源后完成学习。</span></div><div><b>G1 / 行动</b><span>一般准备、复习、记录和就医导航，提供条件与下一步。</span></div><div><b>G2 / 个体化</b><span>涉及个人报告、用药、症状组合，进入医生审核或真人服务。</span></div><div><b>G3 / 紧急</b><span>出现急症线索时优先提示就医，并进入机构设定的紧急服务流程。</span></div></div></article><article class="guard-card"><h3>可追溯的内容工作流</h3><div class="phase-list"><div class="phase-item"><b>来源</b><span>每个医学主张挂来源、日期和适用范围，医生可在审核时快速核对。</span></div><div class="phase-item"><b>审核</b><span>医生确认内容、重点句和互动答案；系统记录版本、修改人和发布时间。</span></div><div class="phase-item"><b>交互</b><span>患者清楚当前处于学习、提问还是服务连接阶段，入口始终可见。</span></div><div class="phase-item"><b>复盘</b><span>记录问题分流、医生覆盖、患者反馈和内容表现，用数据持续优化规则。</span></div></div><div class="reversal"><strong>试点验证节点：</strong>若患者更偏好快速问答、医生更需要内容生产工具，或互动没有带来理解率与服务连接提升，就将产品重心收敛到内容工作台和人工直播工作台。</div></article></div>
+      <div class="ui-card flag">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">造口周围皮肤发红、破皮怎么处理</div>
+            <div class="ui-cm">42 人问过（含家属 19 人）· 集中在术后 2–6 周 · 本院尚无对应内容</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn p">认领选题</button></div>
+        </div>
+        <div class="ui-quote">
+          <b>患者原话（脱敏抽样）</b>：「贴袋子那一圈红了，有点破皮，是不是过敏，要不要换个牌子」
+          <div class="ui-src">
+            <span class="tg gray">来源 · 家属账号提问</span>
+            <span class="tg b">建议形态 · 分步骤演示</span>
+            <span class="tg y">建议造口治疗师出镜</span>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <section id="sources">
-      <div class="wrap">
-        <div class="section-head"><div><div class="section-kicker">11 · Evidence</div><h2>来源、能力与采购判断。</h2></div><p>本报告基于公开产品资料与 GitHub 第一方信息，重点用于能力拆解、产品设计和后续试点讨论。</p></div>
-        <div class="sources"><div class="source"><b>S1</b><a href="https://github.com/kylokuo/AI-for-Med/blob/master/医生端患者端双端AI竞品调研.md" target="_blank" rel="noreferrer">现有 AI-for-Med 双端竞品调研 ↗</a><small>用于患者端/医生端闭环、数据回流、医院系统关系的既有研究基础。</small></div><div class="source"><b>S2</b><a href="https://github.com/h5p/h5p-php-library" target="_blank" rel="noreferrer">H5P Core README ↗</a><small>互动内容核心库；官方内容类型覆盖 Interactive Video、Branching Scenario、Quiz、Game Map；GPL-3.0。</small></div><div class="source"><b>S3</b><a href="https://github.com/livekit/livekit" target="_blank" rel="noreferrer">LiveKit README / Docs ↗</a><small>WebRTC SFU、房间、JWT、数据通道、moderation API、E2EE 与录制；Apache-2.0。</small></div><div class="source"><b>S4</b><a href="https://github.com/medplum/medplum" target="_blank" rel="noreferrer">Medplum README / Docs ↗</a><small>FHIR、身份权限、CDR、Bot 与 React 组件；Apache-2.0。</small></div><div class="source"><b>S5</b><a href="https://www.who.int/health-topics/health-literacy" target="_blank" rel="noreferrer">WHO · Health literacy ↗</a><small>用于“科普不仅是提供信息，还要支持理解与行动”的健康素养方向参考。</small></div><div class="source"><b>S6</b><a href="https://h5p.org/content-types-and-applications" target="_blank" rel="noreferrer">H5P official content types ↗</a><small>用于互动视频、分支情景、测验与游戏地图的产品形态参考；实现仍需按许可证与宿主边界核验。</small></div><div class="source"><b>S7</b><a href="https://www.cancer.gov/types/breast/patient/breast-treatment-pdq" target="_blank" rel="noreferrer">NCI · Breast Cancer ↗</a><small>用于乳腺癌患者教育的主题拆解与患者语言参考；具体内容由专科医生审核。</small></div><div class="source"><b>S8</b><a href="https://www.cancer.gov/types/colorectal/patient/colon-treatment-pdq" target="_blank" rel="noreferrer">NCI · Colon Cancer ↗</a><small>用于结肠癌患者教育的主题拆解与患者语言参考；具体内容由专科医生审核。</small></div><div class="source"><b>S9</b><a href="https://www.cancer.gov/types/stomach/patient/stomach-treatment-pdq" target="_blank" rel="noreferrer">NCI · Stomach Cancer ↗</a><small>用于胃癌患者教育的主题拆解与患者语言参考；具体内容由专科医生审核。</small></div></div>
-        <p class="source-note">调研口径：GitHub 统计信息读取于 2026-11-24。正式试点时，建议结合目标专病、医生工作流、机构服务规则和数据治理要求完成联合评审。</p>
+      <div class="ui-card flag">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">术后什么时候能吃什么，顺序是怎样的</div>
+            <div class="ui-cm">37 人问过 · 贯穿术后全程 · 建议做成分阶段系列</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn">认领</button></div>
+        </div>
+        <div class="ui-quote">
+          <span class="tg y">口径提示</span> 本院营养科与胃肠外科的进食时间表存在差异，
+          建议联合出稿，避免患者端出现两套说法。
+          <div class="ui-src"><span class="tg gray">建议联署 · 临床营养科</span></div>
+        </div>
       </div>
-    </section>
-  </main>
-  <footer><div class="wrap footer-line"><span><strong>KePu / health literacy lab</strong> · 医疗科普智能体产品调研</span><span>基于现有“内容 + 拍摄”能力的产品化设计</span></div></footer>
-  <script>
-    const roleTabs=[...document.querySelectorAll('.role-tab')],rolePanels=[...document.querySelectorAll('.role-panel')];
-    roleTabs.forEach(tab=>tab.addEventListener('click',()=>{roleTabs.forEach(x=>x.setAttribute('aria-selected','false'));rolePanels.forEach(x=>x.classList.remove('active'));tab.setAttribute('aria-selected','true');document.querySelector(`[data-panel="${tab.dataset.role}"]`).classList.add('active')}));
-    const specialtyTabs=[...document.querySelectorAll('.specialty-tab')],specialtyPanels=[...document.querySelectorAll('.specialty-panel')];
-    specialtyTabs.forEach(tab=>tab.addEventListener('click',()=>{specialtyTabs.forEach(x=>x.setAttribute('aria-selected','false'));specialtyPanels.forEach(x=>x.classList.remove('active'));tab.setAttribute('aria-selected','true');document.querySelector(`[data-specialty-panel="${tab.dataset.specialty}"]`).classList.add('active')}));
-    const phaseTabs=[...document.querySelectorAll('.phase-tab')],phasePanels=[...document.querySelectorAll('.phase-panel')];
-    phaseTabs.forEach(tab=>tab.addEventListener('click',()=>{phaseTabs.forEach(x=>x.setAttribute('aria-selected','false'));phasePanels.forEach(x=>x.classList.remove('active'));tab.setAttribute('aria-selected','true');document.querySelector(`[data-phase-panel="${tab.dataset.phase}"]`).classList.add('active')}));
-    const feedback=document.querySelector('#quiz-feedback');
-    document.querySelectorAll('.quiz-option').forEach(option=>option.addEventListener('click',()=>{document.querySelectorAll('.quiz-option').forEach(x=>x.classList.remove('correct','wrong'));option.classList.add(option.dataset.answer);feedback.classList.toggle('show',option.dataset.answer==='correct');if(option.dataset.answer==='wrong'){feedback.textContent='再想一想：不同检查的要求可能不一样，优先依据本次检查的医嘱和机构说明。';feedback.classList.add('show')}}));
-    document.querySelector('#next-quiz').addEventListener('click',event=>{event.currentTarget.textContent='已记录 · 继续下一关 →';event.currentTarget.style.background='#558b70'});
-    document.querySelector('#generate-replay').addEventListener('click',event=>{const button=event.currentTarget;const copy=document.querySelector('#replay-copy');button.disabled=true;button.textContent='正在整理直播内容…';copy.textContent='正在生成章节、短视频、问答卡与复习任务…';window.setTimeout(()=>{button.textContent='回放已生成 ✓';button.style.background='#558b70';copy.textContent='已生成：5 个章节 · 3 条短视频 · 5 张问答卡 · 1 份医生审核清单 · 1 个患者复习任务。'},550)});
-  </script>
+
+      <div class="ui-card risk">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">什么情况要马上回医院（吻合口漏、肠梗阻识别）</div>
+            <div class="ui-cm">11 人问过 · 低频但高危 · 建议优先，并纳入术后必推</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn p">认领选题</button></div>
+        </div>
+        <div class="ui-quote">
+          <span class="tg r">高危选题</span> 涉及急症识别，发布后将设为术后出院患者的强制推送项，
+          不可被患者关闭。审核需科主任参与。
+        </div>
+      </div>
+
+      <div class="ui-card pass">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">造口袋多久换一次、怎么换</div>
+            <div class="ui-cm">已有内容《造口袋更换 6 步》· 分步骤视频 · 本月触达 67 人 · 完成率 83%</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn q">查看数据</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<p class="fignote">
+  <b>三处差别值得注意。</b>左侧栏多了"家属提问"与"造口门诊记录"两个来源；
+  选题卡上出现了"建议形态 · 分步骤演示"和"建议造口治疗师出镜"的标注；
+  第三张卡是低频但高危的急症识别选题，<b>按频次排序会沉到底部</b>，
+  所以系统单独把这类标记为优先并设为术后必推。
+  第二张卡提示的科室间口径差异，是我们认为比技术问题更难处理的部分。
+</p>
+</div>
+
+<!-- ───── 界面图 2：制作台 ───── -->
+<div class="figwrap">
+<div class="figcap">
+  <span class="figcap-n">图 03</span>
+  <span class="figcap-t">脚本制作台</span>
+  <span class="figcap-d">起草只是草稿，每段需挂依据并逐段确认</span>
+</div>
+
+<div class="screen">
+<div class="ui">
+  <div class="ui-top">
+    <div class="ui-mark">橙</div>
+    <div class="ui-brand">橙心健康</div>
+    <div class="ui-sep"></div>
+    <div class="ui-sub">化疗后手脚麻木怎么办 · 口播稿</div>
+    <div class="ui-right">
+      <span class="tg y">4/6 段已确认</span>
+      <button class="ui-btn">存草稿</button>
+      <button class="ui-btn p">提交审核</button>
+    </div>
+  </div>
+
+  <div class="ui-body">
+    <div class="ui-main" style="border-right:1px solid #E8E9EC">
+      <div class="ui-h"><h5>分段脚本</h5><span class="tg t">AI 起草 · 需逐段确认</span></div>
+      <div class="ui-hsub">每段右侧为引用来源。未确认的段落不计入提交，AI 生成标识不可关闭。</div>
+
+      <div class="ui-card pass">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">① 开场 · 这个症状是什么</div>
+            <div class="ui-cm">「不少姐妹在打完紫杉类药物之后，会觉得手指尖、脚底板发麻，像戴了层手套……」</div>
+          </div>
+          <div class="ui-cb"><span class="tg g">已确认</span></div>
+        </div>
+        <div class="ui-src" style="margin-top:8px"><span class="tg b">依据 · 院内知识库「神经毒性」条目</span><span class="tg gray">卢主任 2026-11-20 确认</span></div>
+      </div>
+
+      <div class="ui-card pass">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">② 为什么会这样</div>
+            <div class="ui-cm">「这是化疗药物对周围神经的影响，医学上叫周围神经病变……」</div>
+          </div>
+          <div class="ui-cb"><span class="tg g">已确认</span></div>
+        </div>
+      </div>
+
+      <div class="ui-card risk">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">③ 一般多久会好</div>
+            <div class="ui-cm">「<span style="background:#FDE8E2;padding:0 2px">大部分人在治疗结束后 3 个月内就能完全恢复</span>」</div>
+          </div>
+          <div class="ui-cb"><span class="tg r">需修改</span></div>
+        </div>
+        <div class="ui-quote">
+          <span class="tg r">绝对化用语</span> 「完全恢复」「大部分人」缺少限定与来源。
+          建议改为「恢复情况因人而异，部分人在治疗结束后逐渐改善，也有人持续较久」。
+          <div class="ui-src"><span class="tg gray">触发规则 · 广告法绝对化用语 + 疗效承诺</span><span class="tg y">本段未挂依据来源</span></div>
+        </div>
+      </div>
+
+      <div class="ui-card flag">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">④ 什么时候必须告诉医生</div>
+            <div class="ui-cm">「如果影响到扣纽扣、拿筷子、系鞋带、走路，一定要在下次治疗前告诉医生……」</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn p">确认本段</button></div>
+        </div>
+        <div class="ui-src" style="margin-top:8px"><span class="tg b">依据 · 院内「神经毒性」分级处理口径</span><span class="tg g">与患者端化疗期提醒文案一致</span></div>
+      </div>
+
+      <div class="ui-card">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">⑤ 日常可以注意什么</div>
+            <div class="ui-cm">「注意防烫伤、防跌倒，步态不稳时下床需要有人陪……」</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn">确认</button></div>
+        </div>
+      </div>
+
+      <div class="ui-card">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">⑥ 收尾声明</div>
+            <div class="ui-cm">「本内容为健康科普，不构成诊疗建议，具体请遵医嘱。」</div>
+          </div>
+          <div class="ui-cb"><span class="tg gray">固定段 · 不可删</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:218px;flex:none;padding:17px 16px;background:#FAFBFC">
+      <div style="font-size:12px;font-weight:650;margin-bottom:10px">发布前检查</div>
+
+      <div style="font-size:12px;line-height:1.9;color:#56606B">
+        <div style="display:flex;gap:7px"><span class="tg g">✓</span>账号已向医务处备案</div>
+        <div style="display:flex;gap:7px"><span class="tg g">✓</span>选题在执业范围内</div>
+        <div style="display:flex;gap:7px"><span class="tg g">✓</span>无商品、价格、联系方式</div>
+        <div style="display:flex;gap:7px"><span class="tg g">✓</span>未引用可识别患者影像</div>
+        <div style="display:flex;gap:7px"><span class="tg r">✗</span>第 ③ 段绝对化用语</div>
+        <div style="display:flex;gap:7px"><span class="tg y">!</span>第 ③ 段未挂依据</div>
+        <div style="display:flex;gap:7px"><span class="tg g">✓</span>AI 合成标识已附加</div>
+        <div style="display:flex;gap:7px"><span class="tg g">✓</span>近 90 天内容去重 通过</div>
+      </div>
+
+      <div style="margin-top:16px;padding-top:13px;border-top:1px solid #E8E9EC">
+        <div style="font-size:12px;font-weight:650;margin-bottom:7px">本条可计入</div>
+        <div style="font-size:11.8px;color:#80868F;line-height:1.7">
+          科普音视频作品 · 1 件<br>
+          预计字数 860 字<br>
+          发布后自动归入业绩档案
+        </div>
+      </div>
+
+      <div style="margin-top:16px;padding-top:13px;border-top:1px solid #E8E9EC">
+        <div style="font-size:12px;font-weight:650;margin-bottom:7px">拍摄支持</div>
+        <div style="font-size:11.8px;color:#80868F;line-height:1.7">提词器已同步<br>分镜 6 段 · 预计 2 分 10 秒<br>可约摄制组 / 可自录</div>
+        <button class="ui-btn" style="margin-top:9px;width:100%;justify-content:center">生成提词器</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<p class="fignote">
+  <b>第 ③ 段是这张图想说明的重点。</b>"大部分人 3 个月内完全恢复"是一句很自然、
+  也很想说的话，但在当前口径下会被判为疗效承诺。系统在写作时就标出，
+  并给出替代措辞——替代措辞取自患者端化疗期已有的提醒文案，
+  保证口播和 App 推送说的是同一套话。
+</p>
+
+<div class="col">
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>"逐段确认"这个设计，实际用起来会不会太繁琐？
+      如果改成整篇确认一次，您认为可接受吗——我们担心的是责任边界变模糊。</li>
+    <li>依据来源目前只能挂院内知识库条目。
+      您平时更习惯引用指南（CSCO/NCCN/ESMO）还是院内共识？是否需要支持直接引指南条目。</li>
+  </ul>
+</div>
+</div>
+</div>
+
+<!-- ───── 界面图 3：过审台 ───── -->
+<div class="figwrap">
+<div class="figcap">
+  <span class="figcap-n">图 04</span>
+  <span class="figcap-t">医务处 · 三道审核与留痕</span>
+  <span class="figcap-d">每条视频保留审核记录以备投诉举证</span>
+</div>
+
+<div class="screen">
+<div class="ui">
+  <div class="ui-top">
+    <div class="ui-mark">橙</div>
+    <div class="ui-brand">橙心健康</div>
+    <div class="ui-sep"></div>
+    <div class="ui-sub">医务处 · 科普内容审核</div>
+    <div class="ui-right"><span class="tg y">待审 6</span><div class="ui-avatar">医</div></div>
+  </div>
+
+  <div class="ui-body">
+    <div class="ui-main">
+      <div class="ui-h"><h5>审核队列</h5><span class="tg gray">先审后发 · 全程留痕</span></div>
+      <div class="ui-hsub">一个入口，三道审查。任何一道退回都会带着具体条款回到医生的草稿箱。</div>
+
+      <div class="ui-grid3" style="margin-bottom:15px">
+        <div class="ui-stat"><div class="ui-sv">6</div><div class="ui-sl">待审内容</div><div class="ui-sd">平均停留 1.4 天</div></div>
+        <div class="ui-stat"><div class="ui-sv">92%</div><div class="ui-sl">一次通过率</div><div class="ui-sd">较上月 +7pt</div></div>
+        <div class="ui-stat"><div class="ui-sv">3</div><div class="ui-sl">本月退回</div><div class="ui-sd down">均为绝对化用语</div></div>
+      </div>
+
+      <div class="ui-card">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">化疗后手脚麻木怎么办　<span class="tg t">乳腺外科 · 卢</span></div>
+            <div class="ui-cm">口播视频 2′10″ · 860 字 · AI 起草 6 段，医生确认 6 段</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn">退回</button><button class="ui-btn p">通过</button></div>
+        </div>
+        <div style="display:flex;gap:0;margin-top:11px;border:1px solid #EDEFF2;border-radius:7px;overflow:hidden">
+          <div style="flex:1;padding:9px 11px;border-right:1px solid #EDEFF2;background:#F3F8F4">
+            <div style="font-size:11px;color:#2F6B4D;font-weight:650">① 运营初审 · 已过</div>
+            <div style="font-size:11px;color:#80868F;margin-top:3px">禁词 0 · 去重通过 · 11-21 10:32</div>
+          </div>
+          <div style="flex:1;padding:9px 11px;border-right:1px solid #EDEFF2;background:#F3F8F4">
+            <div style="font-size:11px;color:#2F6B4D;font-weight:650">② 医务复审 · 已过</div>
+            <div style="font-size:11px;color:#80868F;margin-top:3px">专业范围内 · 口径与知识库一致 · 11-22 09:14</div>
+          </div>
+          <div style="flex:1;padding:9px 11px;background:#FDF8EE">
+            <div style="font-size:11px;color:#86651C;font-weight:650">③ 合规终审 · 待处理</div>
+            <div style="font-size:11px;color:#80868F;margin-top:3px">广告法 · 导流检查 · 分配给 法务-王</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-card risk">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">三阴性乳腺癌最新进展　<span class="tg t">肿瘤内科 · 周</span></div>
+            <div class="ui-cm">图文 1,420 字 · 引用 3 篇文献</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn p">退回并附条款</button></div>
+        </div>
+        <div class="ui-quote">
+          <span class="tg r">第 2 段</span> 出现具体在研品牌药名与「有效率」表述，按清单第二条属变相推销风险。
+          <span class="tg y">第 5 段</span> 「国内领先」缺少出处。
+        </div>
+      </div>
+
+      <div class="ui-card pass">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">造口袋更换 6 步　<span class="tg t">胃肠外科 · 造口治疗师</span></div>
+            <div class="ui-cm">已通过三道审核 · 11-20 发布 · 定向送达 67 人（含家属 24 人）</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn q">查看留痕</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<p class="fignote">
+  <b>留痕的用途是举证。</b>常见的合规建议是机构制定 SOP、要求发布前提交审核、
+  并留存书面审核记录。所以三道审核各自记录审核人、时间、依据条款和修改痕迹，
+  可整条导出，作为被投诉时的证据。
+</p>
+
+<div class="col">
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>三道审核平均会增加多少等待？我们设想 1–2 天，<b>超过多久您会觉得不可接受</b>。</li>
+    <li>医务复审这一道，在贵院应该由谁承担——科主任、医务处，还是科室指定的审核人？</li>
+    <li>如果某条内容是科室集体共识（比如术后进食时间表），
+      是否需要一条"科室统一发布"的路径，避免每位医生各发一版。</li>
+  </ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════════ 四、患者侧设计 ════════ -->
+<section id="design">
+<div class="ann-layout">
+<div class="col">
+  <span class="sec-no">04 — 患者侧</span>
+  <h2>患者要的不是科普库，是"这条正好是说我的"</h2>
+
+  <p class="lede">
+    把一千条科普放进 App，患者一条也不会看。
+    真正能被看完的只有一种：在他刚好遇到那个问题的那一天，推给他的那一条。
+  </p>
+
+  <p>
+    现有医患端已经知道每个患者处在哪个治疗节点：术后第几天、化疗第几周期 D 几、
+    是否已开始内分泌治疗、造口术后第几周。科普内容挂在这条时间轴上，
+    就不再是"内容推荐"，而是"任务的一部分"。
+  </p>
+
+  <h3>三种送达形态</h3>
+  <p>
+    <b>节点推送</b>——患者进入 T 方案第 2 周期前一天，收到《手脚麻木怎么办》；
+    或造口术后第 3 周收到《周围皮肤发红怎么办》。内容结束后直接跟着
+    "我现在就有这个症状"的上报入口。
+  </p>
+  <p>
+    <b>提问即答</b>——患者在首页对话里提问，系统先检索已审核内容库，
+    命中就给视频片段和出处；没命中就整理成结构化问题转给您，
+    <strong>同时进入选题池</strong>。
+  </p>
+  <p>
+    <b>复诊前包</b>——复诊前 3 天自动生成一个小合集：这段时间问过的问题、
+    对应的已审核解答、以及"建议这次当面问医生"的清单。
+    这一条针对的是患者不知道该问什么、进了诊室想不起来的情况。
+  </p>
+
+  <h3>有两类需求，单条内容解决不了</h3>
+  <p>
+    <b>复发恐惧</b>反复出现、集中在复查前。所以设计上它不是一条内容，
+    而是一个复查前陪伴序列——从复查前 7 天开始，每天一条短内容加一次情绪自评，
+    自评持续高分时转人工，而不是继续推内容。
+  </p>
+  <p>
+    <b>造口适应</b>是另一类。它不是"知道了就会了"，而是需要反复练习和纠错。
+    这类内容我们设想做成分步骤演示加自查清单，患者可以在换袋时边看边做，
+    出现问题时上传照片由造口治疗师远程判断——但这一步是否可行，要听您的意见。
+  </p>
+</div>
+
+<aside class="ann">
+  <div class="ann-item">
+    <b>为什么挂在治疗节点上</b>
+    现有医患端已有化疗周期 D 日、术后天数、门诊与下一周期日期等字段，
+    科普送达复用这套排期引擎，不新建推荐系统。
+  </div>
+  <div class="ann-item red">
+    <b>不做个性化医疗建议</b>
+    节点推送只决定"推哪条已审核内容"，不生成针对个体的处置意见。
+    一般健康教育与个体化诊疗建议之间的界线必须由系统保证，
+    而不是靠提示语。
+  </div>
+  <div class="ann-item">
+    <b>人工入口必须保留</b>
+    为老年人、数字能力较弱者及紧急情况保留人工入口，
+    是患者教育类产品的核心合规边界。
+    序列中任何一步都可一键转人工。
+  </div>
+</aside>
+</div>
+
+<!-- ───── 界面图 4：患者端 ───── -->
+<div class="figwrap">
+<div class="figcap">
+  <span class="figcap-n">图 05</span>
+  <span class="figcap-t">患者端与家属端 · 节点送达与提问回流</span>
+  <span class="figcap-d">治疗日历中的科普任务 / 提问即答 / 复诊前准备 / 造口照护（家属）</span>
+</div>
+
+<div class="screen phonerow" style="padding:22px 18px;background:#EFF1EE;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+
+  <!-- 手机 1 -->
+  <div class="phone">
+    <div class="ph-top">
+      <div class="ph-top-r"><span>9:41</span><span>治疗日历</span></div>
+      <div class="ph-t">今天是 T 方案 第2周期 D13</div>
+      <div class="ph-s">陈女士 · 距下次输液还有 8 天</div>
+    </div>
+    <div class="ph-body">
+      <div style="font-size:11px;color:#9AA0A8;margin-bottom:7px">今日任务 2 / 3 已完成</div>
+
+      <div class="ph-card" style="border-left:3px solid var(--terra)">
+        <div class="ph-ct">📺 这个阶段很多人会手麻</div>
+        <div class="ph-cm">1分50秒 · 卢伶俐主任 · 已通过医院审核</div>
+        <div style="margin-top:9px;display:flex;gap:6px">
+          <span class="tg t">为你推送</span><span class="tg gray">T方案 D14 前</span>
+        </div>
+      </div>
+
+      <div class="ph-card">
+        <div class="ph-ct">今天手脚有没有发麻？</div>
+        <div class="ph-cm">看完视频后记录一下，医生复诊时能看到趋势</div>
+        <div style="margin-top:9px;display:flex;gap:6px">
+          <button class="ui-btn" style="flex:1;justify-content:center;font-size:11.5px">没有</button>
+          <button class="ui-btn" style="flex:1;justify-content:center;font-size:11.5px">有一点</button>
+          <button class="ui-btn p" style="flex:1;justify-content:center;font-size:11.5px">影响生活</button>
+        </div>
+      </div>
+
+      <div class="ph-card" style="opacity:.6">
+        <div class="ph-ct">✓ 已完成 · 今日症状记录</div>
+        <div class="ph-cm">恶心 轻度 · 已同步医生端</div>
+      </div>
+    </div>
+    <div class="ph-nav">
+      <div class="ph-ni on"><div class="ph-nd"></div>首页</div>
+      <div class="ph-ni"><div class="ph-nd"></div>日历</div>
+      <div class="ph-ni"><div class="ph-nd"></div>学习</div>
+      <div class="ph-ni"><div class="ph-nd"></div>我的</div>
+    </div>
+  </div>
+
+  <!-- 手机 2 -->
+  <div class="phone">
+    <div class="ph-top">
+      <div class="ph-top-r"><span>9:41</span><span>健康助手</span></div>
+      <div class="ph-t">有问题随时问我</div>
+      <div class="ph-s">回答会标明来源，拿不准会转给医生</div>
+    </div>
+    <div class="ph-body">
+      <div class="bub me">手指尖麻得扣不上扣子，是不是要停药</div>
+
+      <div class="bub ai">
+        这个症状在紫杉类药物治疗期间比较常见，<b>停不停药需要医生判断，不要自己停</b>。
+        <br><br>
+        卢主任讲过这个问题 ——
+        <div style="margin-top:7px;background:#FCF0EA;border-radius:7px;padding:8px 10px">
+          <div style="font-size:12px;font-weight:620">📺 化疗后手脚麻木怎么办</div>
+          <div style="font-size:11px;color:#B05C3C;margin-top:2px">第 4 段正好讲"什么时候必须告诉医生"</div>
+        </div>
+        <div class="bub-src">来源：本院乳腺外科 · 2026-11-22 通过审核 · 含 AI 辅助生成</div>
+      </div>
+
+      <div class="bub ai" style="border-color:#F0D9CE;background:#FFFBF8">
+        你说的「扣不上扣子」属于需要让医生知道的情况。
+        我已经整理成一条记录，<b>卢主任的团队会在今天内看到</b>。
+        <div style="margin-top:8px;display:flex;gap:6px">
+          <button class="ui-btn p" style="font-size:11.5px">好，发给医生</button>
+          <button class="ui-btn" style="font-size:11.5px">先不发</button>
+        </div>
+      </div>
+
+      <div style="font-size:10.5px;color:#A0A6AD;text-align:center;margin-top:10px;line-height:1.6">
+        健康科普不构成诊疗建议<br>紧急情况请直接拨打 120 或前往急诊
+      </div>
+    </div>
+    <div class="ph-nav">
+      <div class="ph-ni on"><div class="ph-nd"></div>首页</div>
+      <div class="ph-ni"><div class="ph-nd"></div>日历</div>
+      <div class="ph-ni"><div class="ph-nd"></div>学习</div>
+      <div class="ph-ni"><div class="ph-nd"></div>我的</div>
+    </div>
+  </div>
+
+  <!-- 手机 3 -->
+  <div class="phone">
+    <div class="ph-top">
+      <div class="ph-top-r"><span>9:41</span><span>复诊准备</span></div>
+      <div class="ph-t">12月1日 复诊</div>
+      <div class="ph-s">还有 3 天 · 帮你整理了这段时间的问题</div>
+    </div>
+    <div class="ph-body">
+      <div class="ph-card">
+        <div class="ph-ct">建议当面问医生 · 3 条</div>
+        <div style="margin-top:9px;font-size:12px;line-height:1.9;color:#56606B">
+          <div>1. 手麻影响扣扣子，下个周期要不要调整</div>
+          <div>2. 内分泌治疗大概要吃几年</div>
+          <div>3. 复查需要空腹吗</div>
+        </div>
+        <button class="ui-btn" style="margin-top:9px;width:100%;justify-content:center;font-size:11.5px">加一条我想问的</button>
+      </div>
+
+      <div class="ph-card">
+        <div class="ph-ct">这段时间已经解答过 · 5 条</div>
+        <div class="ph-cm">升白针骨痛 / 口腔溃疡 / 脱发 / 饮食 / 指甲变化</div>
+        <div style="margin-top:7px"><span class="tg g">均来自本院已审核内容</span></div>
+      </div>
+
+      <div class="ph-card" style="border-left:3px solid #C79A3C">
+        <div class="ph-ct">复查前这几天睡不好？</div>
+        <div class="ph-cm">很多人复查前都会紧张。这里有 7 天的小练习，也可以直接找个案管理师聊聊。</div>
+        <div style="margin-top:9px;display:flex;gap:6px">
+          <button class="ui-btn" style="font-size:11.5px">看看练习</button>
+          <button class="ui-btn" style="font-size:11.5px">找人聊聊</button>
+        </div>
+      </div>
+    </div>
+    <div class="ph-nav">
+      <div class="ph-ni"><div class="ph-nd"></div>首页</div>
+      <div class="ph-ni on"><div class="ph-nd"></div>日历</div>
+      <div class="ph-ni"><div class="ph-nd"></div>学习</div>
+      <div class="ph-ni"><div class="ph-nd"></div>我的</div>
+    </div>
+  </div>
+
+  <!-- 手机 4 · 消化道 / 家属 -->
+  <div class="phone">
+    <div class="ph-top" style="background:#8E5A3F">
+      <div class="ph-top-r"><span>9:41</span><span>家属端</span></div>
+      <div class="ph-t">造口护理 · 术后第 18 天</div>
+      <div class="ph-s">您是 王先生 的主要照护人</div>
+    </div>
+    <div class="ph-body">
+      <div class="ph-card" style="border-left:3px solid #8E5A3F">
+        <div class="ph-ct">📺 周围皮肤发红怎么办</div>
+        <div class="ph-cm">分 4 步 · 造口治疗师演示 · 可边看边做</div>
+        <div style="margin-top:9px;display:flex;gap:6px">
+          <span class="tg t">为你推送</span><span class="tg gray">术后 2–6 周常见</span>
+        </div>
+      </div>
+
+      <div class="ph-card">
+        <div class="ph-ct">换袋自查 · 4 项</div>
+        <div style="margin-top:8px;font-size:12px;line-height:2;color:#56606B">
+          <div style="display:flex;gap:7px"><span class="tg g">✓</span>底盘裁剪大小合适</div>
+          <div style="display:flex;gap:7px"><span class="tg g">✓</span>皮肤清洁晾干</div>
+          <div style="display:flex;gap:7px"><span class="tg y">?</span>周围皮肤有无发红</div>
+          <div style="display:flex;gap:7px"><span class="tg gray">—</span>有无渗漏</div>
+        </div>
+      </div>
+
+      <div class="ph-card" style="border-left:3px solid #C79A3C">
+        <div class="ph-ct">不确定的话，拍张照</div>
+        <div class="ph-cm">造口治疗师会在工作日内看，不是急诊通道。</div>
+        <div style="margin-top:9px;display:flex;gap:6px">
+          <button class="ui-btn p" style="font-size:11.5px">拍照上传</button>
+          <button class="ui-btn" style="font-size:11.5px">看拍摄要求</button>
+        </div>
+      </div>
+
+      <div style="font-size:10.5px;color:#A0A6AD;text-align:center;line-height:1.6;margin-top:4px">
+        出现造口发黑、剧烈腹痛、持续呕吐<br>请立即就医或拨打 120
+      </div>
+    </div>
+    <div class="ph-nav">
+      <div class="ph-ni on"><div class="ph-nd"></div>首页</div>
+      <div class="ph-ni"><div class="ph-nd"></div>日历</div>
+      <div class="ph-ni"><div class="ph-nd"></div>学习</div>
+      <div class="ph-ni"><div class="ph-nd"></div>我的</div>
+    </div>
+  </div>
+</div>
+
+<p class="fignote">
+  <b>第二张是整套设计的枢纽。</b>患者的一次提问同时触发四件事：
+  命中已审核内容并带出处回答、识别出需要医生知道的情况、
+  生成结构化记录进入医生端、把问题计入选题池。
+  <b>第四张是家属端</b>，顶部用了不同色以便区分身份——
+  造口护理的实际执行人常常是家属，内容和自查清单需要直接给到他们。
+  照片上传明确标注"不是急诊通道"，避免患者把它当成随时在线的求助入口。
+</p>
+
+<div class="col">
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>造口照片远程判断这件事，在贵院是否已有类似做法？责任边界怎么划——
+      我们设想只做"是否需要来院"的分诊提示，不做处理意见。</li>
+    <li>节点推送的频率，多久一条是患者能接受的？我们担心做成每日打卡会引起反感。</li>
+    <li>家属账号的授权应该由谁发起、能看到哪些信息？这一块我们目前没有成熟设计。</li>
+  </ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════════ 五、游戏化 ════════ -->
+<section id="game">
+<div class="ann-layout">
+<div class="col">
+  <span class="sec-no">05 — 学习闭环</span>
+  <h2>关于游戏化，证据只支持到"参与度"为止</h2>
+
+  <p class="lede">
+    "游戏式科普"是个很容易做过头的方向。我们查了现有证据，
+    结论是：参与度和依从性的改善有支持，改善临床结局的证据不够。
+    所以设计上我们刻意克制，这一节也请您判断是否还是过了。
+  </p>
+
+  <p>
+    2025 年一篇纳入 17 项 RCT 的系统综述把慢病游戏化干预分成三类——
+    体感康复游戏、VR 干预、面向教育与行为改变的数字游戏化，
+    结局集中在躯体功能、心理健康、依从性与自我管理、动机与参与度四个维度。
+    一项针对肿瘤患者的 scoping review 检索至 2023 年 12 月，
+    纳入 2011–2023 年 30 项研究、共 1,118 名参与者。样本量普遍不大。
+  </p>
+  <p>
+    国内证据里较具体的一项：中华护理杂志 2025 年发表的慢阻肺肺康复教育游戏
+    （微信小程序），试验组 40 例对照组 40 例，肺康复依从性良好者占比
+    85% 对 25%（χ²=29.091，P&lt;0.001）。以色列一项护士主导的住院患者
+    游戏化教育准实验研究，90 例完成，游戏化组在知识、自我效能、依从性
+    三项上均优于常规教育（P&lt;0.01）。
+  </p>
+  <p>
+    教育学领域的 meta 分析提供了一个旁证：游戏化提升内在动机、自主感与关联感，
+    但对胜任度影响极小。<strong>也就是说，它能让人愿意来、愿意留，
+    但不会自动让人学会。</strong>
+  </p>
+
+  <h3>基于此，我们只做三件事</h3>
+</div>
+
+<aside class="ann">
+  <div class="ann-item red">
+    <b>肿瘤患者不同于慢病患者</b>
+    上述证据多来自慢阻肺、糖尿病、精神疾病人群。
+    治疗期肿瘤患者的体力、情绪波动与预后焦虑都不同，
+    连胜制、排行榜这类机制有伤害风险，不能直接照搬。
+  </div>
+  <div class="ann-item">
+    <b>连胜机制要宽容</b>
+    有康复系统的设计是：每日登录 1 分，连续 7 天额外 5 分，
+    积分可兑换失败后的重试次数。
+    对照组是 Mango Health 的严格规则——错过窗口即永久标记、无法补救。
+    治疗期患者应采用前者。
+  </div>
+  <div class="ann-item">
+    <b>不做跨患者排行榜</b>
+    治疗反应差异极大，把完成度做成患者间排名，
+    等于让副作用重的人排在最后。
+    要比只跟自己比。
+  </div>
+</aside>
+</div>
+
+<div class="redlines">
+  <div class="rl ok">
+    <div class="rl-h"><span class="rl-n">A</span><span class="rl-t">把"学会了"变成可见</span></div>
+    <div class="rl-b">看完内容后的 2–3 道小题，答错立即给出正确说法和出处。
+    目的不是考试，是把"看过"变成"确认理解"，同时给您一份理解薄弱点的分布——
+    哪些话患者普遍没听懂，下次门诊可以重点讲。</div>
+  </div>
+  <div class="rl ok">
+    <div class="rl-h"><span class="rl-n">B</span><span class="rl-t">把"坚持"变成可积累</span></div>
+    <div class="rl-b">症状记录、量表填写、康复动作跟练的连续性，用温和的进度与里程碑呈现。
+    断一天不清零，可补记；连续中断只是暂停，不惩罚。</div>
+  </div>
+  <div class="rl ok">
+    <div class="rl-h"><span class="rl-n">C</span><span class="rl-t">把"不孤单"变成结构</span></div>
+    <div class="rl-b">同周期同方案的匿名群体进度（"和你同一周期的 23 人里，18 人完成了今天的记录"），
+    不显示个体排名，不显示谁落后。</div>
+  </div>
+</div>
+
+<div class="col">
+<h4>明确不做的机制</h4>
+<ul>
+  <li><b>排行榜与竞争</b>——治疗反应差异不是努力程度差异</li>
+  <li><b>连胜清零与惩罚</b>——化疗后几天起不来是常态，不该被标记为失败</li>
+  <li><b>积分兑换实物或费用减免</b>——涉及诱导就医与变相营销风险</li>
+  <li><b>用勋章激励"分享给朋友"</b>——双向推荐奖励在医疗语境下是导流</li>
+  <li><b>把答题成绩展示给其他患者</b>——健康素养差异不该被公开比较</li>
+</ul>
+</div>
+
+<!-- ───── 界面图 5：游戏化 ───── -->
+<div class="figwrap">
+<div class="figcap">
+  <span class="figcap-n">图 06</span>
+  <span class="figcap-t">患者端 · 学习闭环与进度</span>
+  <span class="figcap-d">答错不扣分，断更不清零，不与他人排名</span>
+</div>
+
+<div class="screen" style="padding:26px;background:#EFF1EE;display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+
+  <div class="phone">
+    <div class="ph-top">
+      <div class="ph-top-r"><span>9:41</span><span>看完了，试两道题</span></div>
+      <div class="ph-t">手脚麻木 · 第 2 题</div>
+      <div class="ph-s">答错没关系，会告诉你为什么</div>
+    </div>
+    <div class="ph-body">
+      <div class="ph-card">
+        <div class="ph-ct">出现下面哪种情况，必须在下次治疗前告诉医生？</div>
+        <div style="margin-top:11px;display:flex;flex-direction:column;gap:7px">
+          <div style="border:1px solid #EDEFF2;border-radius:8px;padding:9px 11px;font-size:12.3px">A. 指尖偶尔有一点麻</div>
+          <div style="border:1.5px solid #B65438;background:#FDF3F0;border-radius:8px;padding:9px 11px;font-size:12.3px">
+            B. 麻了两天，自己吃点维生素就好 <span class="tg r" style="margin-left:4px">你选的</span>
+          </div>
+          <div style="border:1.5px solid #4E8A6E;background:#F2F8F4;border-radius:8px;padding:9px 11px;font-size:12.3px">
+            C. 扣不上扣子、走路发飘 <span class="tg g" style="margin-left:4px">正确</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ph-card" style="border-left:3px solid #4E8A6E">
+        <div class="ph-ct">为什么是 C</div>
+        <div class="ph-cm">
+          判断要不要处理，看的是"有没有影响日常动作"，不是麻了几天。
+          自己加用药物前请先问医生或药师。
+        </div>
+        <div style="margin-top:8px;font-size:10.5px;color:#9AA0A8;padding-top:7px;border-top:1px dashed #E4E6EA">
+          出自视频第 4 段 · 本院乳腺外科已审核
+        </div>
+        <button class="ui-btn" style="margin-top:9px;width:100%;justify-content:center;font-size:11.5px">回看这一段</button>
+      </div>
+
+      <div style="font-size:11px;color:#9AA0A8;text-align:center">答错不扣分，这题会在 3 天后再出现一次</div>
+    </div>
+    <div class="ph-nav">
+      <div class="ph-ni"><div class="ph-nd"></div>首页</div>
+      <div class="ph-ni"><div class="ph-nd"></div>日历</div>
+      <div class="ph-ni on"><div class="ph-nd"></div>学习</div>
+      <div class="ph-ni"><div class="ph-nd"></div>我的</div>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="ph-top">
+      <div class="ph-top-r"><span>9:41</span><span>我的记录</span></div>
+      <div class="ph-t">这一程，你走到这里了</div>
+      <div class="ph-s">T 方案 第 2 周期 · 共 4 个周期</div>
+    </div>
+    <div class="ph-body">
+      <div class="ph-card">
+        <div class="ph-ct">治疗进度</div>
+        <div style="font-size:11.5px;color:#80868F;margin-top:3px">第 2 / 4 周期</div>
+        <div class="ui-bar"><i style="width:44%"></i></div>
+      </div>
+
+      <div class="ph-card">
+        <div class="ph-ct">症状记录 · 连续 9 天</div>
+        <div style="font-size:11.5px;color:#80868F;margin-top:3px">11 月 3 日漏了一天，已帮你补上</div>
+        <div style="display:flex;gap:3px;margin-top:9px">
+          <span style="flex:1;height:22px;border-radius:3px;background:#C8704E"></span>
+          <span style="flex:1;height:22px;border-radius:3px;background:#C8704E"></span>
+          <span style="flex:1;height:22px;border-radius:3px;background:#E8C4B3;border:1px dashed #C8704E"></span>
+          <span style="flex:1;height:22px;border-radius:3px;background:#C8704E"></span>
+          <span style="flex:1;height:22px;border-radius:3px;background:#C8704E"></span>
+          <span style="flex:1;height:22px;border-radius:3px;background:#C8704E"></span>
+          <span style="flex:1;height:22px;border-radius:3px;background:#C8704E"></span>
+          <span style="flex:1;height:22px;border-radius:3px;background:#EDEFF2"></span>
+        </div>
+        <div style="font-size:10.5px;color:#9AA0A8;margin-top:6px">虚线那天是补记的，一样算数</div>
+      </div>
+
+      <div class="ph-card">
+        <div class="ph-ct">看懂了 7 个问题</div>
+        <div class="ph-cm">手麻 · 升白针 · 口腔溃疡 · 脱发 · 恶心 · 指甲 · 饮食</div>
+        <div style="margin-top:8px"><span class="tg g">复诊时可一键给医生看</span></div>
+      </div>
+
+      <div class="ph-card" style="background:#FCF0EA;border-color:#F0D9CE">
+        <div class="ph-ct">和你同一周期的 23 位病友</div>
+        <div class="ph-cm">今天有 18 人完成了记录。看不到具体是谁，也没有排名。</div>
+      </div>
+    </div>
+    <div class="ph-nav">
+      <div class="ph-ni"><div class="ph-nd"></div>首页</div>
+      <div class="ph-ni"><div class="ph-nd"></div>日历</div>
+      <div class="ph-ni"><div class="ph-nd"></div>学习</div>
+      <div class="ph-ni on"><div class="ph-nd"></div>我的</div>
+    </div>
+  </div>
+</div>
+
+<p class="fignote">
+  <b>右图那条虚线是刻意的。</b>漏记的那一格用虚线补上，旁边写"一样算数"——
+  治疗期的中断是治疗的一部分，不该被记为失败。
+  最下面那张卡只给同伴存在感，不给排名。
+</p>
+
+<div class="col">
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>答题这个形式，您的患者群体能接受吗？会不会觉得被当成学生考。
+      尤其是年龄偏大的消化道术后患者。</li>
+    <li>"理解薄弱点分布"对您有参考价值吗，还是会变成又一个没人看的报表。</li>
+    <li>我们是否还是做得太轻了？如果您认为治疗期患者需要更强的激励才能坚持记录，
+      请指出来——但我们不打算做排行榜。</li>
+  </ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════════ 六、直播 ════════ -->
+<section id="live">
+<div class="ann-layout">
+<div class="col">
+  <span class="sec-no">06 — 直播</span>
+  <h2>直播能做，但要把"问诊"和"带货"彻底拆出去</h2>
+
+  <p class="lede">
+    平台规则里医院本职诊疗、学术交流、科研项目、免费公益健康科普，
+    以及备案后的多点执业和政府合作项目不受限制。
+    公益科普直播是一条合法且有价值的路径，前提是形态设计对。
+  </p>
+
+  <p>
+    风险点非常集中：直播带货（清单第二条）、诊疗过程直播（涉民法典、医师法、
+    个人信息保护法）、隔空开方、患者入镜未授权、弹幕问诊当诊疗。
+    专家明确指出即使业余时间以个人身份直播，也不得销售药品、医疗器械，
+    直播身份不得与医院挂钩。
+  </p>
+
+  <h3>设计思路：把"讲"和"问"拆成两条流</h3>
+  <p>
+    台上只讲已过审的内容——讲稿就是制作台里那份过了三道审核的稿子。
+    弹幕里的个人病情提问<strong>不在直播间回答</strong>，
+    自动转成工单进入待办队列，按正常随访流程处理。
+  </p>
+  <p>
+    这样看起来削弱了互动性。但直播间里几百人，当场能被点到名回答的不过十来个，
+    其余的问题以前就消失了；现在它们全部变成工单和选题。
+    <b>这个取舍是否成立，想听您的判断</b>——如果您认为当场答疑的现场感
+    恰恰是直播的价值所在，那这个设计需要重做。
+  </p>
+</div>
+
+<aside class="ann">
+  <div class="ann-item red">
+    <b>患者入镜</b>
+    直播前须向每一位可能入镜、被收音的患者及相关人员
+    明确告知直播意图、范围、风险及隐私保护措施并取得同意。
+    产品默认关闭任何院内实景直播能力。
+  </div>
+  <div class="ann-item red">
+    <b>回放同样过审</b>
+    直播内容须留存可追溯，回放与切片同样需过审。
+    切片二次剪辑后重新进入审核队列，不能直接发布。
+  </div>
+  <div class="ann-item">
+    <b>资质核验</b>
+    参与科普的医师、护士、药师需通过平台资质认证，
+    须认证医生本人出镜，避免他人代播。
+  </div>
+</aside>
+</div>
+
+<div class="flow">
+  <div class="fl">
+    <div class="fl-n">BEFORE</div>
+    <div class="fl-t">讲稿预审</div>
+    <div class="fl-b">用制作台已过审的稿件，绝对化用语与科普边界逐条过审，含弹幕互动话术</div>
+    <div class="fl-who">医务处 + 法务</div>
+  </div>
+  <div class="fl gate">
+    <div class="fl-n">GATE</div>
+    <div class="fl-t">开播前检查</div>
+    <div class="fl-b">账号备案状态、本人出镜核验、商品组件关闭确认、免责声明挂载</div>
+    <div class="fl-who">系统硬拦截</div>
+  </div>
+  <div class="fl">
+    <div class="fl-n">LIVE</div>
+    <div class="fl-t">讲</div>
+    <div class="fl-b">提词器播放过审讲稿；实时敏感词提示；不回答个体病情</div>
+    <div class="fl-who">医生</div>
+  </div>
+  <div class="fl">
+    <div class="fl-n">LIVE</div>
+    <div class="fl-t">问（分离流）</div>
+    <div class="fl-b">弹幕问题自动分三类：可公开解答的共性问题 / 转私域工单 / 紧急提示就医</div>
+    <div class="fl-who">系统 + 场控护士</div>
+  </div>
+  <div class="fl">
+    <div class="fl-n">AFTER</div>
+    <div class="fl-t">回流</div>
+    <div class="fl-b">工单进医生待办、问题进选题池、回放切片重新送审、场次进业绩档案</div>
+    <div class="fl-who">系统</div>
+  </div>
+</div>
+
+<!-- ───── 界面图 6：直播 ───── -->
+<div class="figwrap">
+<div class="figcap">
+  <span class="figcap-n">图 07</span>
+  <span class="figcap-t">医生端 · 公益科普直播控制台</span>
+  <span class="figcap-d">讲与问分离，弹幕不当诊疗</span>
+</div>
+
+<div class="screen">
+<div class="ui">
+  <div class="ui-top">
+    <div class="ui-mark">橙</div>
+    <div class="ui-brand">橙心健康</div>
+    <div class="ui-sep"></div>
+    <div class="ui-sub">公益科普直播 · 术后康复这半年</div>
+    <div class="ui-right">
+      <span class="tg r">● 直播中 23:14</span>
+      <span class="tg gray">在线 418</span>
+      <button class="ui-btn">结束直播</button>
+    </div>
+  </div>
+
+  <div class="ui-body">
+    <div class="ui-main" style="border-right:1px solid #E8E9EC">
+      <div class="ui-h"><h5>提词器</h5><span class="tg g">本场讲稿已过三道审核</span></div>
+      <div class="ui-hsub">第 3 节 / 共 5 节 · 偏离讲稿范围时会提示</div>
+
+      <div class="ui-card" style="opacity:.45">
+        <div class="ui-ct">② 术后多久可以开始活动手臂</div>
+      </div>
+
+      <div class="ui-card flag">
+        <div class="ui-ct">③ 为什么会肿，什么时候要紧</div>
+        <div style="font-size:14px;line-height:1.85;margin-top:9px;color:#38404A">
+          「手术之后胳膊肿，和淋巴回流有关系。<b style="background:#FCF0EA">轻微的肿、抬高之后能消</b>，
+          这种可以先观察。但如果是<b style="background:#FCF0EA">突然肿起来、发红发烫、或者伴着发烧</b>，
+          要尽快来看，不要等。」
+        </div>
+        <div class="ui-src" style="margin-top:9px">
+          <span class="tg b">依据 · 院内淋巴水肿观察口径</span>
+          <span class="tg g">11-18 医务复审通过</span>
+        </div>
+      </div>
+
+      <div class="ui-card" style="opacity:.45">
+        <div class="ui-ct">④ 日常可以做的几个动作</div>
+      </div>
+
+      <div style="background:#FFF8F5;border:1px solid #F0D9CE;border-radius:8px;padding:11px 13px;margin-top:13px">
+        <div style="font-size:12px;font-weight:650;color:#B4472A">实时提示</div>
+        <div style="font-size:12.3px;color:#80868F;margin-top:5px;line-height:1.7">
+          刚才提到了"基本都能恢复"。<b style="color:#252932">这是绝对化表述</b>，
+          建议改口为"恢复情况因人而异"。本提示仅你可见。
+        </div>
+      </div>
+    </div>
+
+    <div style="width:270px;flex:none;background:#FAFBFC;padding:15px 15px;min-width:0">
+      <div style="font-size:12.5px;font-weight:650;margin-bottom:4px">观众提问 · 已自动分流</div>
+      <div style="font-size:11.5px;color:#80868F;margin-bottom:12px">个人病情问题不在直播间回答</div>
+
+      <div style="background:#fff;border:1px solid #E8E9EC;border-left:3px solid #4E8A6E;border-radius:7px;padding:10px 11px;margin-bottom:8px">
+        <div style="font-size:11px;color:#2F6B4D;font-weight:650;margin-bottom:4px">可公开解答 · 共性问题 7 条</div>
+        <div style="font-size:12.2px;line-height:1.6;color:#4B5159">「做了腋窝清扫的人是不是都会肿」<span class="tg gray" style="margin-left:4px">31 人问</span></div>
+        <button class="ui-btn p" style="margin-top:8px;width:100%;justify-content:center;font-size:11.5px">插入下一节解答</button>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E8E9EC;border-left:3px solid #C8704E;border-radius:7px;padding:10px 11px;margin-bottom:8px">
+        <div style="font-size:11px;color:#B05C3C;font-weight:650;margin-bottom:4px">转私域工单 · 12 条</div>
+        <div style="font-size:12.2px;line-height:1.6;color:#4B5159">
+          「我右胳膊从上周开始肿，还能吃消炎药吗」
+        </div>
+        <div style="font-size:11px;color:#9AA0A8;margin-top:6px">涉及个体用药，已转 该患者主管团队 待办</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E8E9EC;border-left:3px solid #B65438;border-radius:7px;padding:10px 11px;margin-bottom:8px">
+        <div style="font-size:11px;color:#A8402A;font-weight:650;margin-bottom:4px">紧急提示 · 1 条</div>
+        <div style="font-size:12.2px;line-height:1.6;color:#4B5159">
+          「肿得厉害还发烧 38.6」
+        </div>
+        <div style="font-size:11px;color:#9AA0A8;margin-top:6px">已向该用户单独推送就医提示，并通知场控护士</div>
+      </div>
+
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid #E8E9EC;font-size:11.5px;color:#80868F;line-height:1.8">
+        <div style="display:flex;gap:6px"><span class="tg g">✓</span>商品组件已关闭</div>
+        <div style="display:flex;gap:6px"><span class="tg g">✓</span>本人出镜已核验</div>
+        <div style="display:flex;gap:6px"><span class="tg g">✓</span>免责声明常驻挂载</div>
+        <div style="display:flex;gap:6px"><span class="tg g">✓</span>无患者入镜</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<p class="fignote">
+  <b>右栏的三色分流是这个模块的核心。</b>绿色是能当场讲的共性问题；
+  赤陶色涉及个体，转工单；深红是紧急的，单独推送就医提示并通知场控护士。
+  没有一条个人病情问题会在直播间被回答，但也没有一条被丢掉。
+</p>
+
+<div class="col">
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>公益科普直播，贵院目前是否已有开展？由科室还是宣传部门组织，
+      一场需要多少准备时间。</li>
+    <li>"不当场回答个人问题"这条，实际直播时能守住吗？
+      我们担心的是现场气氛下很难拒绝。是否需要由场控护士而非医生本人来拦。</li>
+    <li>转出的工单，由谁接最合适——个案管理师、专科护士还是医生本人？
+      这直接决定了直播的实际成本。</li>
+  </ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════════ 七、业绩档案 ════════ -->
+<section id="credit">
+<div class="col">
+  <span class="sec-no">07 — 业绩归集</span>
+  <h2>做过的科普，自动变成可提交的材料</h2>
+  <p class="lede">
+    各省口径差异很大，这里列几个作为参考：河南要求医学行业期刊/报刊科普文章
+    不少于 1500 字；广西申报正副高需本专业科普 5 篇、每篇不少于 1500 字；
+    山西细化到省级及以上科普大赛三等奖以上、省级科普赛事前 10 名、
+    参加省级及以上卫生健康部门健康科普新闻发布会等；
+    晋升正高在三级医院需市厅级以上科普奖或官方媒体科普作品累计 3 项。
+  </p>
+  <p>
+    所以这个模块做成按省配置的规则引擎，不写死。
+    <strong>需要说明的是，它只做归集和比对，不替代人工核对</strong>——
+    各省细则更新频繁，最终以申报当年的官方通知为准。
+  </p>
+</div>
+
+<div class="figwrap">
+<div class="figcap">
+  <span class="figcap-n">图 08</span>
+  <span class="figcap-t">医生端 · 科普业绩档案</span>
+  <span class="figcap-d">按所在省份职称口径自动归集</span>
+</div>
+
+<div class="screen">
+<div class="ui">
+  <div class="ui-top">
+    <div class="ui-mark">橙</div>
+    <div class="ui-brand">橙心健康</div>
+    <div class="ui-sep"></div>
+    <div class="ui-sub">我的科普业绩 · 2026 年度</div>
+    <div class="ui-right"><span class="tg b">口径 · 江苏省卫生系列高级职称</span><button class="ui-btn p">导出材料包</button></div>
+  </div>
+  <div class="ui-body" style="min-height:360px">
+    <div class="ui-main">
+      <div class="ui-grid3" style="margin-bottom:14px">
+        <div class="ui-stat"><div class="ui-sv">14</div><div class="ui-sl">已发布科普作品</div><div class="ui-sd">音视频 9 · 图文 5</div></div>
+        <div class="ui-stat"><div class="ui-sv">3</div><div class="ui-sl">公益科普讲座 / 直播</div><div class="ui-sd">累计触达 2,140 人次</div></div>
+        <div class="ui-stat"><div class="ui-sv">100%</div><div class="ui-sl">三道审核通过留痕</div><div class="ui-sd">0 起投诉</div></div>
+      </div>
+
+      <div class="ui-card">
+        <div class="ui-ct" style="margin-bottom:11px">对照申报条件</div>
+        <div style="font-size:12.5px;line-height:2.1;color:#4B5159">
+          <div style="display:flex;align-items:center;gap:9px">
+            <span class="tg g">达成</span><span style="flex:1">每年开展健康科普活动不少于 2 次</span><span style="color:#80868F">已 3 次</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span class="tg g">达成</span><span style="flex:1">第一作者科普文章 ≥1500 字</span><span style="color:#80868F">2 篇符合</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span class="tg y">待补</span><span style="flex:1">市厅级以上科普奖项（限第 1 位）</span><span style="color:#80868F">0 项</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span class="tg gray">可选</span><span style="flex:1">参加省级及以上健康科普活动</span><span style="color:#80868F">1 次</span>
+          </div>
+        </div>
+        <div style="font-size:11.5px;color:#9AA0A8;margin-top:11px;padding-top:10px;border-top:1px dashed #E4E6EA">
+          口径随各省文件更新，以本人所在省卫健委最新通知为准。本模块不替代人工核对。
+        </div>
+      </div>
+
+      <div class="ui-card">
+        <div class="ui-crow">
+          <div style="min-width:0">
+            <div class="ui-ct">作品清单（节选）</div>
+            <div class="ui-cm">含发布平台、时间、字数、审核编号，可生成带院方签章的汇总表</div>
+          </div>
+          <div class="ui-cb"><button class="ui-btn">查看全部 14 条</button></div>
+        </div>
+        <div style="margin-top:10px;font-size:12.3px;line-height:2;color:#56606B">
+          <div style="display:flex;gap:10px"><span style="flex:1">化疗后手脚麻木怎么办</span><span class="tg gray">视频 860字</span><span style="color:#9AA0A8;width:72px">11-22</span></div>
+          <div style="display:flex;gap:10px"><span style="flex:1">术后引流管居家观察要点</span><span class="tg gray">视频 740字</span><span style="color:#9AA0A8;width:72px">11-20</span></div>
+          <div style="display:flex;gap:10px"><span style="flex:1">年轻患者治疗前要不要先问生育这件事</span><span class="tg gray">图文 1,680字</span><span style="color:#9AA0A8;width:72px">10-31</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<p class="fignote">
+  <b>"待补"那一行是重点。</b>不只归集已完成的，更是提前告诉您还缺什么，
+  让科普从年底突击变成全年有计划的事。
+</p>
+
+<div class="col">
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>这个清单对您实际申报有用吗？还是说医院人事科另有一套记录方式，
+      我们做的会变成重复劳动。</li>
+    <li>除了职称，贵院是否还有其他与科普挂钩的考核（绩效、评优、科室任务）？
+      如果有，归集口径需要一并支持。</li>
+  </ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════════ 八、分期 ════════ -->
+<section id="plan">
+<div class="col">
+  <span class="sec-no">08 — 落地分期</span>
+  <h2>先做留痕，再做送达，最后才做生成</h2>
+  <p class="lede">
+    这个顺序与常见做法相反。多数团队会先做内容生成，再做分发，最后补合规；
+    在当前环境下这会撞墙——合规不过，生成得再好也发不出去。
+    下面的时间估算是我们的设想，<b>实际节奏取决于贵院的配合程度</b>。
+  </p>
+</div>
+
+<div class="phase">
+  <div class="phase-k"><b>P0</b><span>0–3 个月 · 让医院敢用</span></div>
+  <div class="phase-v">
+    <ul>
+      <li>账号备案登记（机构、科室、报告日期、备案号），离职状态联动冻结</li>
+      <li>三道审核流转与完整留痕，支持按条导出举证材料</li>
+      <li>禁词、绝对化用语、商品与联系方式检测；AI 合成标识强制挂载</li>
+      <li>选题：接入现有首页 AI 对话与陪伴群的提问日志，做聚类与去重</li>
+      <li>科普内容库与患者端治疗节点的绑定关系（先人工配置，不做自动推荐）</li>
+    </ul>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">
+      <b>P0 的验收标准不是发布量，</b>是医务处愿意把这套流程写进院内管理办法。
+    </p>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-k"><b>P1</b><span>3–8 个月 · 让患者看到</span></div>
+  <div class="phase-v">
+    <ul>
+      <li>节点定向送达与观看完成率回收</li>
+      <li>提问即答：命中已审核内容库则带出处回答，未命中转结构化工单并进选题池</li>
+      <li>复诊前准备包</li>
+      <li>学习闭环（2–3 道题、答错给出处、间隔重现）</li>
+      <li>分步骤演示类内容的制作支持与家属账号送达（消化道方向优先）</li>
+      <li>公益科普直播控制台：提词器、弹幕三色分流、回放送审</li>
+      <li>业绩档案：按贵院所在省份口径配置</li>
+    </ul>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-k"><b>P2</b><span>8 个月以后 · 视前期情况再定</span></div>
+  <div class="phase-v">
+    <ul>
+      <li>起草能力增强（多模态分镜、数字人辅助出镜，仍需逐段确认）</li>
+      <li>基于理解薄弱点分布的内容改进建议</li>
+      <li>复查前陪伴序列与情绪自评的转人工阈值调优</li>
+      <li>跨院科普内容库的共享与再审机制</li>
+    </ul>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">
+      <b>P2 之前不做：</b>全自动生成直接发布、公域账号代运营、
+      涨粉类选题推荐、积分兑换实物、跨患者排行榜。
+    </p>
+  </div>
+</div>
+
+<div class="col">
+<div class="askbox">
+  <div class="askbox-h">想听您的意见</div>
+  <ul>
+    <li>P0 需要医务处配合制定审核流程，这件事在贵院推动起来难度如何？
+      如果很难，我们需要一个不依赖院级制度的轻量版本。</li>
+    <li>两个专科如果只能先做一个，您建议从哪个开始？
+      我们倾向乳腺（节点结构更清晰），但消化道的造口需求可能更刚性。</li>
+  </ul>
+</div>
+</div>
+</section>
+
+<!-- ════════ 九、指标 ════════ -->
+<section id="metric">
+<div class="ann-layout">
+<div class="col">
+  <span class="sec-no">09 — 怎么算有效</span>
+  <h2>我们不打算用播放量汇报结果</h2>
+  <p class="lede">
+    播放量是公域产品的指标，用在这里会把方向带回"蹭热点、做爆款"。
+    下面是我们打算用来衡量的东西，<b>也是试点期会定期同步给您的内容</b>。
+  </p>
+</div>
+<aside class="ann">
+  <div class="ann-item red">
+    <b>关于几个流传的数字</b>
+    调研中见到的"依从性从 41% 升到 92%"等数字来自咨询公司博客，
+    非同行评议研究。我们不会用它对贵院做任何承诺。
+  </div>
+  <div class="ann-item">
+    <b>不等同于患者获益</b>
+    单条目准确率、省时估算、聊天次数都不等于患者获益。
+    任何效果结论都需要对照与分层分析。
+  </div>
+</aside>
+</div>
+
+<div class="tw">
+<table>
+<thead><tr><th style="width:116px">层级</th><th style="width:34%">指标</th><th>为什么选它</th></tr></thead>
+<tbody>
+<tr><td rowspan="3"><b>合规</b><br><span class="pill r">一票否决</span></td><td>审核留痕完整率</td><td>每条内容是否都能导出三道审核记录。低于 100% 即视为产品缺陷</td></tr>
+<tr><td>红线拦截命中与漏放</td><td>被系统拦住的、以及审核时才被人工发现的——后者是规则库的改进输入</td></tr>
+<tr><td>投诉与处罚事件数</td><td>目标是 0。有三甲医院因皮肤科医生短视频涉疗效宣传被罚 30 万元</td></tr>
+
+<tr><td rowspan="3"><b>医生侧</b></td><td>月活跃创作人数 / 科室渗透</td><td>比总发布量更能反映是否真的被用起来</td></tr>
+<tr><td>从认领选题到发布的中位时长</td><td>对应"省了多少事"。需区分设计估算与真实计时</td></tr>
+<tr><td>业绩档案导出使用率</td><td>评审季前后的导出行为，是该模块价值的直接验证</td></tr>
+
+<tr><td rowspan="4"><b>患者侧</b></td><td>节点推送的观看完成率</td><td>只统计完成，不统计点击。点击量在定向场景下没有意义</td></tr>
+<tr><td>提问命中已审核内容的比例</td><td>反映内容库覆盖度。未命中的即为下一轮选题</td></tr>
+<tr><td>答题的首次正确率与间隔重现正确率</td><td>目前唯一能逼近"是否真的理解"的指标</td></tr>
+<tr><td>复诊前准备包的问题被当面提出比例</td><td>需医生端勾选确认，样本量小但方向明确</td></tr>
+
+<tr><td rowspan="3"><b>闭环</b></td><td>直播弹幕转工单的响应时长与关闭率</td><td>分流做得再细，没人接住就是摆设</td></tr>
+<tr><td>科普触达后症状上报的及时性变化</td><td>看过手麻内容的患者是否更早上报手麻。需对照组</td></tr>
+<tr><td>数字可及性差异</td><td>按年龄、地区、教育、设备分层。不能只在高数字能力患者中评价</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col">
+<h3>想请您帮我们判断的几件事</h3>
+<p>
+  这些是我们自己拿不准、也不是靠查资料能解决的问题。
+  如果其中某一条的答案是否定的，相应模块就需要重做。
+</p>
+<ol>
+  <li><b>等待的容忍度</b>：三道审核会带来 1–2 天延迟。
+    为了换取合规留痕和业绩归集，这个等待值得吗？上限是多久。</li>
+  <li><b>定向推送的实际效果</b>：我们假设按治疗节点推送的完成率显著高于普通推送。
+    如果从您的经验看差距有限，整个送达设计的前提就不成立。</li>
+  <li><b>选题来源是否够用</b>：靠患者提问聚类做选题，会不会漏掉那些
+    "患者不知道该问、但必须讲"的内容——比如消化道的急症识别。
+    我们目前的解法是允许科室指定必推选题，是否够。</li>
+  <li><b>工单由谁接</b>：无论是提问回流还是直播弹幕，
+    最终都要有人接。在贵院的实际配置下，这个人应该是谁。</li>
+  <li><b>两个专科的内容能否复用</b>：化疗副作用类内容在两个方向上是否基本通用，
+    还是说即使同一主题也需要分别制作。这直接影响内容库的规模估算。</li>
+</ol>
+</div>
+</section>
+
+<!-- ════════ 参考 ════════ -->
+<section id="refs">
+<div class="col">
+  <span class="sec-no">10 — 依据</span>
+  <h2>本文引用的材料</h2>
+  <p style="font-size:13px;color:var(--muted);max-width:38em">
+    政策文件与同行评议研究按原文引用，便于您核对。
+    标注「行业媒体」的来源为自媒体或咨询机构文章，其中的经营数据与效果数字
+    未经独立核实，仅用于了解行业做法，不作为论证依据。
+  </p>
+
+  <h4>政策与监管</h4>
+  <ol class="refs">
+    <li><b>国家卫生健康委办公厅、国家中医药局综合司、国家疾控局综合司.</b> 关于印发医务人员互联网健康科普负面行为清单（试行）的通知. 国卫办医政函〔2025〕419号. 2025-11-07. <a href="https://www.nhc.gov.cn/yzygj/c100068/202511/e21f87287e754f19bd0330bc4471c92e.shtml">nhc.gov.cn</a></li>
+    <li><b>新华网.</b> "十条负面行为清单"规范医务人员互联网健康科普——不得以科普方式违法违规导流导诊. 2025-11. <a href="http://www.news.cn/local/20251125/1a3b796055e34d999c6c08e8a69e5b1a/c.html">news.cn</a></li>
+    <li><b>健康界.</b> 负面清单来了：医务人员互联网健康科普的合规边界与治理路径. 2026-01-14.（院级管理办法架构与"一个入口 + 三道审查"流转机制） <a href="https://www.cn-healthcare.com/articlewm/20260114/content-1664683.html">cn-healthcare.com</a></li>
+    <li><b>新华网.</b> 一些"擦边"科普医学账号引流后各种带货：专家指出医师不得利用职务之便推销产品. 2025-08-08. <a href="http://www.news.cn/legal/20250808/9cfff66212d44618a31c3337d0e49939/c.html">news.cn</a></li>
+    <li><b>人力资源社会保障部、国家卫生健康委、国家中医药局.</b> 关于深化卫生专业技术人员职称制度改革的指导意见. 2021.（首次明确科普作品可作为业绩成果代表作）</li>
+    <li><b>《全民健康素养提升三年行动（2024—2027）》</b>相关配套文件，将健康科普纳入卫生专业技术人员职称考核体系。</li>
+  </ol>
+
+  <h4>游戏化与患者教育证据</h4>
+  <ol class="refs" start="7">
+    <li><b>Gamification-Based Interventions in Chronic Disease Care: A Systematic Review of Randomised Controlled Trials.</b> Risk Manag Healthc Policy. 2025. PMID 41445941.（纳入 17 项 RCT） <a href="https://pubmed.ncbi.nlm.nih.gov/41445941/">pubmed</a></li>
+    <li><b>Empowering Cancer Patients: A Scoping Review on Gamified Approaches To Health Literacy for Self-Care.</b> PMC12417285.（2011–2023，30 项研究，1,118 名参与者） <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12417285/">PMC</a></li>
+    <li><b>中华护理杂志.</b> 基于健康信念模式的慢阻肺患者肺康复教育游戏软件的研发与应用. 2025;60(5).（试验组/对照组各 40 例；依从性良好率 85% vs 25%，χ²=29.091，P&lt;0.001） <a href="https://zh.zhhlzzs.com/EN/10.3761/j.issn.0254-1769.2025.05.002">zhhlzzs.com</a></li>
+    <li><b>Nurse-led inpatient education using a gamification approach for patients with mental illness: A quasi-experimental study.</b> Int J Nurs Sci. 2025. PMID 40241868.（90 例完成，游戏化组三项结局均优，P&lt;0.01） <a href="https://pubmed.ncbi.nlm.nih.gov/40241868/">pubmed</a></li>
+    <li><b>Attraction and achievement as 2 attributes of gamification in healthcare: an evolutionary concept analysis.</b> PMC11130557. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11130557/">PMC</a></li>
+  </ol>
+
+  <h4>患者信息需求</h4>
+  <ol class="refs" start="12">
+    <li><b>Cancer information needs according to cancer type: A content analysis of data from Japan's largest cancer information website.</b> PMC6205331.（2,782 条自由文本提问文本挖掘；乳腺癌特异话题为保乳与重建、三阴性、内分泌治疗） <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6205331/">PMC</a></li>
+    <li><b>Unmet needs and related factors of Korean breast cancer survivors: a multicenter, cross-sectional study.</b> PMC6712787.（332 例；未满足需求最高域为信息与教育，单项最高为应对复发恐惧） <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6712787/">PMC</a></li>
+    <li><b>Information Needs Among Thai Women Breast Cancer Patients During the Initial Treatment Phase.</b> J Clin Nurs. 2025.（总体信息需求 224.7/260.0） <a href="https://onlinelibrary.wiley.com/doi/10.1111/jocn.17598">Wiley</a></li>
+    <li><b>Unmet Care Needs and Uncertainty in Patients Newly Diagnosed with Breast Cancer.</b> PMC9691238. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9691238/">PMC</a></li>
+  </ol>
+
+  <h4>行业做法（未经独立核实）</h4>
+  <ol class="refs" start="16">
+    <li><b>法治日报.</b> 医生只是"摆拍演员"：MCN 流水线打造"网红医生"现象调查. 2025-08. <a href="https://health.gmw.cn/2025-08/12/content_38243834.htm">光明网转载</a> · 行业媒体</li>
+    <li><b>第一财经 / 中新网.</b> 揭秘 10 亿网民在看的健康科普生意：谁在批量制造网红医生. 2025-09-25. <a href="https://www.chinanews.com.cn/sh/2025/09-25/10489219.shtml">中新网</a> · 行业媒体</li>
+    <li><b>健康报.</b> "AI 医生"上线做科普：四川省妇幼保健院解锁健康科普新路径. 2025-10-11.（"专家审定—数字人生成—自动剪辑"链条） <a href="https://jkb.com.cn/hyfz/yy_hyzx/2025/1011/506171.html">jkb.com.cn</a></li>
+    <li><b>华夏医界网.</b> 慢病中心"用药游戏厅"依从性提升设计；患者社交货币体系. <span style="color:var(--vermilion)">咨询机构博客，所载依从性数字未经同行评议，本文仅参考其机制设计，不采用其效果数据</span></li>
+    <li><b>知乎.</b> 医生自媒体平台科普法律风险和合规建议.（三级审核 SOP 与留痕要求） <a href="https://zhuanlan.zhihu.com/p/718783659">zhihu</a> · 行业媒体</li>
+  </ol>
+
+  <h4>说明</h4>
+  <p style="font-size:12.8px;color:var(--muted);line-height:1.72;max-width:38em">
+    本方案中界面图的视觉语言与组件结构，取自我们现有的医患端交互原型；
+    患者端示例文案的口径与现有化疗期、围手术期陪伴模块保持一致。
+    <b>消化道肿瘤方向的内容结构（造口护理、饮食分阶段、急症识别）</b>
+    是我们基于公开资料与乳腺方向经验的推演，<span style="color:var(--vermilion)">尚未经过专科验证</span>，
+    这也是本次最希望听取您意见的部分。
+  </p>
+</div>
+</section>
+
+<div class="foot sheet">
+  <div class="col">
+    <p>
+      科普模块设计方案 · 乳腺肿瘤 / 消化道肿瘤 · 2026-11-24<br>
+      文中界面均为 HTML/CSS 绘制的设计示意，非可运行软件；数据为演示占位值。
+      示例医学文案仅用于说明产品结构，未经医学审核，不代表任何诊疗口径，
+      不可用于患者教育或对外发布。实际上线时所有医学内容以贵院知识库与科室共识为准。
+    </p>
+  </div>
+</div>
+
+</main>
+<script>
+(function(){
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main > section[id]'));
+  var rail = document.getElementById('rail-list');
+  var coverIndex = document.getElementById('cover-index-list');
+  var docmark = document.querySelector('.docmark');
+  var progress = document.getElementById('reading-progress-fill');
+
+  if (!sections.length) return;
+
+  function sectionTitle(section){
+    var heading = section.querySelector('h2');
+    return heading ? heading.textContent.trim() : section.id;
+  }
+
+  function sectionNumber(section){
+    var number = section.querySelector('.sec-no');
+    return number ? number.textContent.trim().split(' ')[0] : '';
+  }
+
+  function sectionLabel(section){
+    var number = section.querySelector('.sec-no');
+    if (!number) return section.id;
+    var text = number.textContent.trim();
+    var parts = text.split('—');
+    return parts.length > 1 ? parts.slice(1).join('—').trim() : text;
+  }
+
+  function addLink(container, section, className, shortLabel){
+    if (!container) return;
+    var link = document.createElement('a');
+    var number = document.createElement('span');
+    link.className = className;
+    link.href = '#' + section.id;
+    number.textContent = sectionNumber(section);
+    link.appendChild(number);
+    link.appendChild(document.createTextNode(shortLabel ? sectionLabel(section) : sectionTitle(section)));
+    container.appendChild(link);
+  }
+
+  sections.forEach(function(section){
+    addLink(rail, section, 'rail-link', true);
+    addLink(coverIndex, section, 'cover-index-link', false);
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('.docnav a[href^="#"], .rail-link, .cover-index-link'));
+  var ticking = false;
+
+  function currentSection(){
+    var headerHeight = docmark ? docmark.getBoundingClientRect().height : 0;
+    var marker = Math.max(190, headerHeight + 110);
+    var current = sections[0].id;
+
+    sections.forEach(function(section){
+      if (section.getBoundingClientRect().top <= marker) current = section.id;
+    });
+
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4){
+      current = sections[sections.length - 1].id;
+    }
+    return current;
+  }
+
+  function updateProgress(){
+    if (!progress) return;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    progress.style.width = (ratio * 100).toFixed(2) + '%';
+  }
+
+  function updateActive(){
+    var id = currentSection();
+    links.forEach(function(link){
+      var active = link.getAttribute('href') === '#' + id;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    updateProgress();
+    ticking = false;
+  }
+
+  function scheduleUpdate(){
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateActive);
+  }
+
+  window.addEventListener('scroll', scheduleUpdate, {passive:true});
+  window.addEventListener('resize', scheduleUpdate);
+
+  if ('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(scheduleUpdate, {
+      rootMargin: '-90px 0px -65% 0px',
+      threshold: [0, 0.01, 0.5, 1]
+    });
+    sections.forEach(function(section){ observer.observe(section); });
+  }
+
+  var topLink = document.querySelector('.rail-top');
+  if (topLink){
+    topLink.addEventListener('click', function(event){
+      event.preventDefault();
+      window.scrollTo({top:0, left:0, behavior:'smooth'});
+      if (window.history && window.history.replaceState){
+        window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      }
+    });
+  }
+
+  updateActive();
+})();
+</script>
 </body>
 </html>
