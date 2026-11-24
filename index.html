@@ -105,7 +105,7 @@
     <section id="live" style="background:#e9f1eb">
       <div class="wrap">
         <div class="section-head"><div><div class="section-kicker">06 · Live clinic</div><h2>直播是一场有准备的共同健康课堂。</h2></div><p>直播前收集问题，直播中帮助医生筛选与解释，直播后把高频问题变成下一轮内容与患者复习任务。</p></div>
-        <div class="live-panel"><div class="live-main"><div class="live-scene"><div class="live-badge">● LIVE 12:38</div><div class="doctor-avatar" aria-hidden="true"></div><div class="live-caption"><small>本场主题</small><strong>检查报告怎么看？</strong></div></div><div class="live-controls"><span>在线 <b>2,486</b> · 互动 <b>438</b> · 已回答 <b>16</b></span><span>章节 03 / 05</span></div></div><div class="live-side"><article class="live-card"><h4>AI 问题队列 · 待医生确认</h4><div class="queue"><div class="question"><em>高频 38×</em> “报告里这个箭头代表什么？”</div><div class="question"><em>需升级</em> “我这种情况需要马上去急诊吗？”</div><div class="question"><em>适合科普</em> “不同检查的参考值为什么不一样？”</div></div><a class="button" href="#guardrail">查看分流规则</a></article><article class="live-card"><h4>直播后自动生成</h4><p>章节回放 · 3 条短视频 · 5 张问答卡 · 1 份医生审核清单 · 1 个患者复习任务</p><button class="button secondary" style="margin-top:15px">模拟生成回放 →</button></article></div></div>
+        <div class="live-panel"><div class="live-main"><div class="live-scene"><div class="live-badge">● LIVE 12:38</div><div class="doctor-avatar" aria-hidden="true"></div><div class="live-caption"><small>本场主题</small><strong>检查报告怎么看？</strong></div></div><div class="live-controls"><span>在线 <b>2,486</b> · 互动 <b>438</b> · 已回答 <b>16</b></span><span>章节 03 / 05</span></div></div><div class="live-side"><article class="live-card"><h4>AI 问题队列 · 待医生确认</h4><div class="queue"><div class="question"><em>高频 38×</em> “报告里这个箭头代表什么？”</div><div class="question"><em>需升级</em> “我这种情况需要马上去急诊吗？”</div><div class="question"><em>适合科普</em> “不同检查的参考值为什么不一样？”</div></div><a class="button" href="#guardrail">查看分流规则</a></article><article class="live-card"><h4>直播后自动生成</h4><p id="replay-copy" aria-live="polite">章节回放 · 3 条短视频 · 5 张问答卡 · 1 份医生审核清单 · 1 个患者复习任务</p><button class="button secondary" style="margin-top:15px" id="generate-replay" type="button">模拟生成回放 →</button></article></div></div>
       </div>
     </section>
 
@@ -155,6 +155,7 @@
     const feedback=document.querySelector('#quiz-feedback');
     document.querySelectorAll('.quiz-option').forEach(option=>option.addEventListener('click',()=>{document.querySelectorAll('.quiz-option').forEach(x=>x.classList.remove('correct','wrong'));option.classList.add(option.dataset.answer);feedback.classList.toggle('show',option.dataset.answer==='correct');if(option.dataset.answer==='wrong'){feedback.textContent='再想一想：不同检查的要求可能不一样，优先依据本次检查的医嘱和机构说明。';feedback.classList.add('show')}}));
     document.querySelector('#next-quiz').addEventListener('click',event=>{event.currentTarget.textContent='已记录 · 继续下一关 →';event.currentTarget.style.background='#558b70'});
+    document.querySelector('#generate-replay').addEventListener('click',event=>{const button=event.currentTarget;const copy=document.querySelector('#replay-copy');button.disabled=true;button.textContent='正在整理直播内容…';copy.textContent='正在生成章节、短视频、问答卡与复习任务…';window.setTimeout(()=>{button.textContent='回放已生成 ✓';button.style.background='#558b70';copy.textContent='已生成：5 个章节 · 3 条短视频 · 5 张问答卡 · 1 份医生审核清单 · 1 个患者复习任务。'},550)});
   </script>
 </body>
 </html>
